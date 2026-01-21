@@ -1,10 +1,6 @@
 import type { NextConfig } from 'next'
-import path from 'path'
 
 const nextConfig: NextConfig = {
-  // Prevent Next from inferring a higher-level workspace root due to other lockfiles on disk.
-  // This ensures output file tracing and page module resolution use THIS project directory.
-  outputFileTracingRoot: path.join(__dirname),
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

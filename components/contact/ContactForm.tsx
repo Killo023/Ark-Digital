@@ -54,7 +54,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-navy-dark via-navy to-navy-light pt-20">
+    <div className="min-h-screen bg-gradient-to-b from-black via-black-light to-black pt-20">
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -62,9 +62,9 @@ export function ContactForm() {
             src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop&q=80"
             alt="Contact Background"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/95 via-navy/90 to-navy-light/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-navy-dark via-navy to-navy-light">
+    <div className="min-h-screen bg-gradient-to-b from-black via-black-light to-black">
       {/* Hero Section with Background */}
       <section className="relative pt-48 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -18,9 +18,9 @@ export default function ProjectsPage() {
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop&q=80"
             alt="Projects Background"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/95 via-navy/90 to-navy-light/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
@@ -44,7 +44,7 @@ export default function ProjectsPage() {
             fill
             className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-light/95 via-navy/90 to-navy-dark/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ProjectGrid projects={projects} />

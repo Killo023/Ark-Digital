@@ -44,7 +44,7 @@ export function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center group py-6 md:py-8"
+            className="flex items-center group py-6 md:py-8 -ml-2 md:ml-0"
           >
             <Image
               src="/images/Logo%20side%20by%20side.png"

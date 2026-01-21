@@ -29,20 +29,20 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <div className="flex flex-col items-center justify-center mb-6 gap-2">
+              <div className="flex flex-col items-center justify-center mb-6 gap-0">
                 <Image
                   src="/images/Logo%20icon%20transparent%20background.png"
                   alt="Ark Digital Icon"
                   width={150}
                   height={150}
-                  className="opacity-80"
+                  className="opacity-80 -mb-6"
                 />
                 <Image
                   src="/images/Logo%20Text%20white.png"
                   alt="Ark Digital"
                   width={270}
                   height={120}
-                  className="opacity-80"
+                  className="opacity-80 -mt-6"
                 />
               </div>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -151,20 +151,20 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <div className="flex flex-col items-center justify-center mb-6 gap-2">
+              <div className="flex flex-col items-center justify-center mb-6 gap-0">
                 <Image
                   src="/images/Logo%20icon%20transparent%20background.png"
                   alt="Ark Digital Icon"
                   width={150}
                   height={150}
-                  className="opacity-80"
+                  className="opacity-80 -mb-6"
                 />
                 <Image
                   src="/images/Logo%20Text%20white.png"
                   alt="Ark Digital"
                   width={270}
                   height={120}
-                  className="opacity-80"
+                  className="opacity-80 -mt-6"
                 />
               </div>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -284,20 +284,20 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <div className="flex flex-col items-center justify-center mb-6 gap-2">
+              <div className="flex flex-col items-center justify-center mb-6 gap-0">
                 <Image
                   src="/images/Logo%20icon%20transparent%20background.png"
                   alt="Ark Digital Icon"
                   width={150}
                   height={150}
-                  className="opacity-80"
+                  className="opacity-80 -mb-6"
                 />
                 <Image
                   src="/images/Logo%20Text%20white.png"
                   alt="Ark Digital"
                   width={270}
                   height={120}
-                  className="opacity-80"
+                  className="opacity-80 -mt-6"
                 />
               </div>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">

@@ -1,109 +1,124 @@
-# My Main Business - Automation Solutions Website
+# Ark Digital Website
 
-A modern, responsive business website built with Next.js 14, TypeScript, and Tailwind CSS for an automation solutions company.
+A modern, high-performance rebranding website for Ark Digital - a software firm focused on integrity, security, and navigating the flood of data.
 
-## Features
+## Tech Stack
 
-- **Responsive Design**: Mobile-first approach with beautiful UI across all devices
-- **Modern Tech Stack**: Next.js 14 with App Router, TypeScript, and Tailwind CSS
-- **Lead Generation**: Contact form with API integration for lead capture
-- **SEO Optimized**: Proper meta tags and semantic HTML structure
-- **Performance**: Optimized for speed and Core Web Vitals
-- **Accessibility**: WCAG compliant with proper ARIA labels
-
-## Pages
-
-- **Home**: Hero section, services overview, product showcase, testimonials
-- **Services**: Detailed service offerings with features and benefits
-- **Products**: Product catalog with pricing and comparison table
-- **Blog**: Blog listing with categories and newsletter signup
-- **Contact**: Contact form with validation and success states
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS
+- **Components:** Shadcn/UI
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Language:** TypeScript
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
 ### Installation
 
-1. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Run the development server:
+### Development
+
 ```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Build for Production
+### Build
 
 ```bash
 npm run build
+```
+
+### Start Production Server
+
+```bash
 npm start
 ```
 
 ## Project Structure
 
 ```
-src/
 ├── app/                    # Next.js App Router pages
-│   ├── api/               # API routes
-│   ├── blog/              # Blog page
-│   ├── contact/           # Contact page
-│   ├── products/          # Products page
-│   ├── services/          # Services page
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Home page
-├── components/            # Reusable components
-│   ├── CTA.tsx           # Call-to-action component
-│   ├── Footer.tsx        # Footer component
-│   ├── Hero.tsx          # Hero section
-│   ├── Navbar.tsx        # Navigation component
-│   ├── Products.tsx      # Products showcase
-│   ├── Services.tsx      # Services section
-│   └── Testimonials.tsx  # Testimonials section
-└── lib/                  # Utility functions
+│   ├── layout.tsx          # Root layout with fonts & metadata
+│   ├── page.tsx            # Homepage
+│   ├── projects/           # Projects pages
+│   ├── values/             # Values page
+│   ├── services/           # Services page
+│   └── contact/            # Contact page
+├── components/
+│   ├── ui/                 # Shadcn/UI components
+│   ├── layout/             # Navbar, Footer
+│   ├── sections/           # Page sections (Hero, ProjectsPreview)
+│   └── projects/           # Project-related components
+├── lib/
+│   ├── utils.ts            # Utility functions
+│   ├── animations.ts       # Framer Motion variants
+│   └── projects.ts         # Project data
+└── public/
+    └── images/
+        └── projects/       # Project images (add your images here)
 ```
 
-## Customization
+## Adding Project Images
 
-### Branding
-- Update company name in `src/components/Navbar.tsx` and `src/components/Footer.tsx`
-- Modify colors in `tailwind.config.ts`
-- Replace placeholder content with your actual business information
+Project images should be placed in the following structure:
 
-### Contact Form
-- The contact form currently logs submissions to the console
-- To integrate with email services, modify `src/app/api/contact/route.ts`
-- Consider using services like Formspree, Resend, or SendGrid
+```
+public/images/projects/
+├── chernelang-physio/
+│   ├── hero.jpg
+│   ├── gallery-1.jpg
+│   ├── gallery-2.jpg
+│   └── gallery-3.jpg
+├── fitguide-pro/
+│   ├── hero.jpg
+│   └── gallery-*.jpg
+├── skainet-cleaning/
+├── dma-law/
+└── skills-to-furnish/
+```
 
-### Content
-- Update all placeholder text with your actual business content
-- Replace placeholder images with real product screenshots
-- Add your actual testimonials and case studies
+### Image Requirements
 
-## Deployment
+- **Hero images:** Recommended size: 1920x1080px (16:9 aspect ratio)
+- **Gallery images:** Recommended size: 1920x1080px or similar
+- **Formats:** JPG, PNG, or WebP
+- **Optimization:** Next.js automatically optimizes images, but keep file sizes reasonable
 
-This project is optimized for Vercel deployment:
+## Brand Colors
 
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy with zero configuration
+- **Deep Sea Navy:** `#1A2B3C` (primary)
+- **Golden Accents:** `#D4AF37` (accent)
+- **Slate Grays:** Various shades for text and backgrounds
 
-## Technologies Used
+## Typography
 
-- **Next.js 14**: React framework with App Router
-- **TypeScript**: Type-safe JavaScript
-- **Tailwind CSS**: Utility-first CSS framework
-- **Lucide React**: Beautiful icon library
-- **Vercel**: Deployment platform
+- **Headings:** Playfair Display (serif) or Montserrat (display)
+- **Body:** Inter (sans-serif)
+
+## Features
+
+- ✅ Responsive design (mobile-first)
+- ✅ SEO optimized
+- ✅ Accessible (A11Y)
+- ✅ Image optimization
+- ✅ Smooth animations
+- ✅ Glassmorphism effects
+- ✅ Project portfolio with detailed case studies
+- ✅ Image gallery with lightbox
+
+## Future Enhancements
+
+- Values page content
+- Services page content
+- Contact form with Server Actions
+- Blog functionality
+- Additional project filtering
 
 ## License
 
-This project is proprietary and confidential.
+Copyright © 2024 Ark Digital. All rights reserved.

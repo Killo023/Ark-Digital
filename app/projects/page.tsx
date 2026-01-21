@@ -12,7 +12,7 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-navy-dark via-navy to-navy-light">
       {/* Hero Section with Background */}
-      <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
+      <section className="relative pt-32 pb-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop&q=80"

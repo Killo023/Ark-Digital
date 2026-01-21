@@ -9,7 +9,7 @@ import { fadeIn, slideUp, staggerContainer, revealCurve } from "@/lib/animations
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-black-light to-black pt-24 md:pt-28">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-black-light to-black pt-4 md:pt-8">
       {/* Background Image */}
       <div className="absolute inset-0 z-[1]">
         <Image

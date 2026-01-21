@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   creator: "Ark Digital",
   publisher: "Ark Digital",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://arkdigital.com"),
+  icons: {
+    icon: "/images/Logo%20icon%20transparent%20background.png",
+    apple: "/images/Logo%20icon%20transparent%20background.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

@@ -35,8 +35,8 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-navy/80 backdrop-blur-md shadow-lg"
-          : "bg-navy/60 backdrop-blur-sm"
+          ? "bg-black/80 backdrop-blur-md shadow-lg border-b border-yellow/20"
+          : "bg-black/60 backdrop-blur-sm"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,14 +44,14 @@ export function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center group py-2"
+            className="flex items-center group py-6 md:py-8"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/Logo%20side%20by%20side.png"
               alt="Ark Digital"
-              width={280}
-              height={160}
-              className="h-[160px] w-auto md:h-[168px] transition-transform group-hover:scale-105"
+              width={500}
+              height={180}
+              className="h-[180px] w-auto md:h-[200px] transition-transform group-hover:scale-105"
               priority
             />
           </Link>
@@ -62,7 +62,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-slate-200 hover:text-gold transition-colors duration-200 rounded-md hover:bg-navy-light/50"
+                className="px-4 py-2 text-sm font-medium text-slate-200 hover:text-yellow transition-colors duration-200 rounded-md hover:bg-black-light/50"
               >
                 {link.label}
               </Link>
@@ -72,7 +72,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-slate-200 hover:text-gold transition-colors"
+            className="md:hidden p-2 text-slate-200 hover:text-yellow transition-colors"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
@@ -92,7 +92,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-navy-dark/95 backdrop-blur-md border-t border-navy-light"
+            className="md:hidden bg-black/95 backdrop-blur-md border-t border-yellow/20"
           >
             <div className="container mx-auto px-4 py-4 space-y-2">
               {navLinks.map((link, index) => (
@@ -105,7 +105,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-base font-medium text-slate-200 hover:text-gold hover:bg-navy-light/50 rounded-md transition-colors"
+                    className="block px-4 py-3 text-base font-medium text-slate-200 hover:text-yellow hover:bg-black-light/50 rounded-md transition-colors"
                   >
                     {link.label}
                   </Link>

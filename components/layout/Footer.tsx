@@ -28,19 +28,19 @@ export function Footer() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeIn}
-      className="bg-navy-dark text-slate-300 border-t border-navy-light"
+      className="bg-black text-slate-300 border-t border-yellow/20"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Section */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-col items-start space-y-3">
               <Image
-                src="/images/logo.png"
-                alt="Ark Digital Logo"
-                width={280}
-                height={160}
-                className="h-[160px] w-auto md:h-[168px]"
+                src="/images/Logo%20side%20by%20side.png"
+                alt="Ark Digital"
+                width={400}
+                height={180}
+                className="h-[180px] w-auto"
               />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
@@ -59,7 +59,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-400 hover:text-gold transition-colors duration-200"
+                    className="text-sm text-slate-400 hover:text-yellow transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -78,7 +78,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-400 hover:text-gold transition-colors duration-200"
+                    className="text-sm text-slate-400 hover:text-yellow transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -94,7 +94,7 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <Mail className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
+                <Mail className="h-4 w-4 text-yellow mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:info@underratedsecurity.com"
                   className="text-sm text-slate-400 hover:text-gold transition-colors duration-200"
@@ -103,7 +103,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
+                <MapPin className="h-4 w-4 text-yellow mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-slate-400">
                   Serving clients worldwide
                 </span>
@@ -113,7 +113,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-navy-light">
+        <div className="mt-12 pt-8 border-t border-yellow/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-slate-500">
               © {currentYear} Ark Digital. All rights reserved.

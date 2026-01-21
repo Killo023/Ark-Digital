@@ -200,53 +200,114 @@ export default function ServicesPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {additionalServices.map((service) => (
-                <div
-                  key={service.title}
-                  className="bg-navy-light/40 backdrop-blur-sm rounded-xl p-6 border border-gold/20 hover:border-gold/50 transition-all hover:bg-navy-light/50"
-                >
-                  <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center mb-4">
-                    <service.icon className="h-6 w-6 text-gold" />
+              {additionalServices.map((service, index) => {
+                const serviceImages = [
+                  "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&q=80",
+                  "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop&q=80",
+                  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&q=80",
+                  "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop&q=80",
+                  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80",
+                  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80",
+                  "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop&q=80",
+                ];
+                return (
+                  <div
+                    key={service.title}
+                    className="bg-navy-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-gold/20 hover:border-gold/50 transition-all hover:bg-navy-light/50 group"
+                  >
+                    <div className="relative h-40 overflow-hidden">
+                      <Image
+                        src={serviceImages[index % serviceImages.length]}
+                        alt={service.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 to-transparent" />
+                      <div className="absolute top-3 right-3 w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <service.icon className="h-5 w-5 text-gold" />
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-white font-display text-lg font-bold mb-2">
+                        {service.title}
+                      </h3>
+                      <p className="text-slate-300 text-sm leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-white font-display text-lg font-bold mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center bg-navy-light/40 backdrop-blur-sm rounded-2xl p-12 border border-gold/20">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Transform Your Digital Presence?
-            </h2>
-            <p className="text-lg text-slate-300 mb-6 max-w-2xl mx-auto">
-              Let's discuss how our services can help solve your business challenges and drive growth.
-            </p>
-            <div className="bg-navy-dark/50 rounded-lg p-6 border border-gold/20 max-w-2xl mx-auto mb-8">
-              <h3 className="text-white font-display text-lg font-bold mb-2">Our Methodology</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Our Agile-Scrum methodology ensures efficient delivery of projects by promoting collaboration, flexibility, and iterative progress, ultimately leading to higher customer satisfaction and successful outcomes.
-              </p>
+      <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop&q=80"
+            alt="CTA Background"
+            fill
+            className="object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/95 via-navy/90 to-navy-light/95" />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Image Showcase */}
+            <div className="grid grid-cols-3 gap-4 mb-12 max-w-2xl mx-auto">
+              <div className="relative aspect-square rounded-lg overflow-hidden group">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&q=80"
+                  alt="Team"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative aspect-square rounded-lg overflow-hidden group">
+                <Image
+                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=400&fit=crop&q=80"
+                  alt="Development"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative aspect-square rounded-lg overflow-hidden group">
+                <Image
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop&q=80"
+                  alt="Innovation"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
             </div>
-            <Button
-              asChild
-              size="lg"
-              className="bg-gold hover:bg-gold-light text-navy-dark font-semibold px-8 py-6 text-base group"
-            >
-              <Link href="/contact">
-                Get in Touch
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
+            
+            <div className="bg-navy-light/40 backdrop-blur-sm rounded-2xl p-12 border border-gold/20">
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
+                Ready to Transform Your Digital Presence?
+              </h2>
+              <p className="text-lg text-slate-300 mb-6 max-w-2xl mx-auto">
+                Let&apos;s discuss how our services can help solve your business challenges and drive growth.
+              </p>
+              <div className="bg-navy-dark/50 rounded-lg p-6 border border-gold/20 max-w-2xl mx-auto mb-8">
+                <h3 className="text-white font-display text-lg font-bold mb-2">Our Methodology</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Our Agile-Scrum methodology ensures efficient delivery of projects by promoting collaboration, flexibility, and iterative progress, ultimately leading to higher customer satisfaction and successful outcomes.
+                </p>
+              </div>
+              <Button
+                asChild
+                size="lg"
+                className="bg-gold hover:bg-gold-light text-navy-dark font-semibold px-8 py-6 text-base group"
+              >
+                <Link href="/contact">
+                  Get in Touch
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

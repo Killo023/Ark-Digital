@@ -93,30 +93,49 @@ export default function ValuesPage() {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {values.map((value, index) => (
-              <div
-                key={value.title}
-                className="bg-navy-light/40 backdrop-blur-sm rounded-xl p-8 border border-gold/20 hover:border-gold/50 transition-all hover:bg-navy-light/50 group"
-              >
-                <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold/30 transition-colors">
-                  <value.icon className="h-8 w-8 text-gold" />
+            {values.map((value, index) => {
+              const valueImages = [
+                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&q=80",
+                "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop&q=80",
+              ];
+              return (
+                <div
+                  key={value.title}
+                  className="bg-navy-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-gold/20 hover:border-gold/50 transition-all hover:bg-navy-light/50 group"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={valueImages[index % valueImages.length]}
+                      alt={value.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/50 to-transparent" />
+                    <div className="absolute top-4 left-4 w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-gold/30 transition-colors">
+                      <value.icon className="h-8 w-8 text-gold" />
+                    </div>
+                  </div>
+                  <div className="p-8">
+                    <h2 className="text-white font-display text-xl font-bold mb-3">
+                      {value.title}
+                    </h2>
+                    <p className="text-slate-300 leading-relaxed mb-6">
+                      {value.description}
+                    </p>
+                    <ul className="space-y-2">
+                      {value.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-start text-sm text-slate-400">
+                          <span className="text-gold mr-2 mt-1">•</span>
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <h2 className="text-white font-display text-xl font-bold mb-3">
-                  {value.title}
-                </h2>
-                <p className="text-slate-300 leading-relaxed mb-6">
-                  {value.description}
-                </p>
-                <ul className="space-y-2">
-                  {value.details.map((detail, idx) => (
-                    <li key={idx} className="flex items-start text-sm text-slate-400">
-                      <span className="text-gold mr-2 mt-1">•</span>
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

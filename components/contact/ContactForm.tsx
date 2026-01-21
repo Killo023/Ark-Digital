@@ -72,11 +72,47 @@ export function ContactForm() {
               Get in Touch
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-              Ready to transform your digital presence? Let's discuss how we can help solve your business challenges.
+              Ready to transform your digital presence? Let&apos;s discuss how we can help solve your business challenges.
             </p>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-8">
               Fill out the form below or reach out directly. We typically respond within 24 hours.
             </p>
+            
+            {/* Image Gallery */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12">
+              <div className="relative aspect-square rounded-lg overflow-hidden group">
+                <Image
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop&q=80"
+                  alt="Contact 1"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative aspect-square rounded-lg overflow-hidden group">
+                <Image
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=400&fit=crop&q=80"
+                  alt="Contact 2"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative aspect-square rounded-lg overflow-hidden group">
+                <Image
+                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=400&fit=crop&q=80"
+                  alt="Contact 3"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative aspect-square rounded-lg overflow-hidden group">
+                <Image
+                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=400&fit=crop&q=80"
+                  alt="Contact 4"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -105,7 +141,7 @@ export function ContactForm() {
                         Thank You!
                       </h3>
                       <p className="text-slate-300">
-                        We've received your message and will get back to you soon.
+                        We&apos;ve received your message and will get back to you soon.
                       </p>
                     </div>
                   ) : (

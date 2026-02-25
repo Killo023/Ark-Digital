@@ -27,6 +27,25 @@ function getNextDue(
   return d.toLocaleDateString()
 }
 
+function getDueDateInfo(
+  lastPayment: string | null,
+  billingInterval: 'monthly' | 'quarterly' = 'monthly'
+): { dueDateStr: string; isOverdue: boolean; daysOverdue: number } {
+  if (!lastPayment) return { dueDateStr: '—', isOverdue: false, daysOverdue: 0 }
+  const d = new Date(lastPayment)
+  d.setMonth(d.getMonth() + (billingInterval === 'quarterly' ? 3 : 1))
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  const due = new Date(d)
+  due.setHours(0, 0, 0, 0)
+  const diffDays = Math.round((today.getTime() - due.getTime()) / 86400_000)
+  return {
+    dueDateStr: d.toLocaleDateString(),
+    isOverdue: diffDays > 0,
+    daysOverdue: Math.max(0, diffDays),
+  }
+}
+
 function CopyButton({ text, label }: { text: string; label: string }) {
   const [copied, setCopied] = useState(false)
   const copy = () => {
@@ -123,6 +142,7 @@ export default function Portal() {
 
   if (view === 'dashboard' && client) {
     const nextDue = getNextDue(client.lastPaymentDate, client.billingInterval ?? 'monthly')
+    const dueInfo = getDueDateInfo(client.lastPaymentDate, client.billingInterval ?? 'monthly')
     const paymentReference = client.name
     const clientPayments = paymentStore
       .getAll()
@@ -158,9 +178,28 @@ export default function Portal() {
                 )}
               </p>
             </div>
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Pay by</p>
-              <p className="mt-0.5 text-white">{nextDue}</p>
+            <div
+              className={`rounded-lg border px-3 py-2 ${
+                dueInfo.isOverdue
+                  ? 'border-amber-500/70 bg-amber-950/40'
+                  : 'border-amber-400/40 bg-amber-950/20'
+              }`}
+            >
+              <p className="text-xs font-semibold uppercase tracking-wide text-amber-400/90">
+                {dueInfo.isOverdue ? 'Payment overdue' : 'Pay by'}
+              </p>
+              <p
+                className={`mt-0.5 font-semibold ${
+                  dueInfo.isOverdue ? 'text-amber-200' : 'text-white'
+                }`}
+              >
+                {nextDue}
+                {dueInfo.isOverdue && dueInfo.daysOverdue > 0 && (
+                  <span className="ml-1.5 text-sm font-bold text-amber-300">
+                    ({dueInfo.daysOverdue} day{dueInfo.daysOverdue !== 1 ? 's' : ''} overdue)
+                  </span>
+                )}
+              </p>
             </div>
             <div>
               <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Hosting</p>

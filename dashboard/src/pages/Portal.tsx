@@ -194,51 +194,67 @@ export default function Portal() {
           Log in to view your account with Ark Digital
         </p>
       </div>
-      <form
-        onSubmit={handleLogin}
-        className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6"
-      >
-        <div className="mb-4">
-          <label className="mb-1 block text-sm font-medium text-neutral-400">Client</label>
-          <select
-            value={clientId}
-            onChange={(e) => setClientId(e.target.value)}
-            required
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
+      {clientsWithPortal.length === 0 ? (
+        <div className="rounded-xl border border-amber-900/50 bg-amber-950/30 px-5 py-6 text-sm">
+          <p className="font-medium text-amber-200">No clients have portal access yet</p>
+          <p className="mt-2 text-neutral-400">
+            To enable the portal: go to the <strong className="text-neutral-300">Business dashboard</strong> (link above),
+            open <strong className="text-neutral-300">Clients</strong>, edit a client, set a <strong className="text-neutral-300">Portal PIN</strong>, and save.
+            Then return here to log in.
+          </p>
+          <p className="mt-3 text-xs text-neutral-500">
+            Portal data is stored in this browser. If you’re a client, ask your account manager to set up your PIN and use the same link they used to set it.
+          </p>
+        </div>
+      ) : (
+        <>
+          <form
+            onSubmit={handleLogin}
+            className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6"
           >
-            <option value="">Select your business</option>
-            {clientsWithPortal.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="mb-4">
-          <label className="mb-1 block text-sm font-medium text-neutral-400">PIN</label>
-          <input
-            type="password"
-            value={pin}
-            onChange={(e) => setPin(e.target.value)}
-            required
-            autoComplete="off"
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
-            placeholder="Your portal PIN"
-          />
-        </div>
-        {error && (
-          <p className="mb-4 text-sm text-red-400">{error}</p>
-        )}
-        <button
-          type="submit"
-          className="w-full rounded-lg bg-white py-2.5 text-sm font-medium text-neutral-900 hover:bg-neutral-200"
-        >
-          Log in
-        </button>
-      </form>
-      <p className="mt-4 text-center text-xs text-neutral-500">
-        Don’t have a PIN? Ask your account manager to enable portal access.
-      </p>
+            <div className="mb-4">
+              <label className="mb-1 block text-sm font-medium text-neutral-400">Client</label>
+              <select
+                value={clientId}
+                onChange={(e) => setClientId(e.target.value)}
+                required
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
+              >
+                <option value="">Select your business</option>
+                {clientsWithPortal.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="mb-1 block text-sm font-medium text-neutral-400">PIN</label>
+              <input
+                type="password"
+                value={pin}
+                onChange={(e) => setPin(e.target.value)}
+                required
+                autoComplete="off"
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
+                placeholder="Your portal PIN"
+              />
+            </div>
+            {error && (
+              <p className="mb-4 text-sm text-red-400">{error}</p>
+            )}
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-white py-2.5 text-sm font-medium text-neutral-900 hover:bg-neutral-200"
+            >
+              Log in
+            </button>
+          </form>
+          <p className="mt-4 text-center text-xs text-neutral-500">
+            Don’t have a PIN? Ask your account manager to enable portal access.
+          </p>
+        </>
+      )}
     </div>
   )
 }

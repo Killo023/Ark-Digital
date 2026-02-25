@@ -23,7 +23,9 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
   const [gmbProfileName, setGmbProfileName] = useState('')
   const [gmbLocation, setGmbLocation] = useState('')
   const [gmbVerified, setGmbVerified] = useState(false)
+  const [gmbNote, setGmbNote] = useState('')
   const [portalPin, setPortalPin] = useState('')
+  const [submitError, setSubmitError] = useState('')
 
   useEffect(() => {
     if (client) {
@@ -41,18 +43,31 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
       setGmbProfileName(client.gmbProfileName ?? '')
       setGmbLocation(client.gmbLocation ?? '')
       setGmbVerified(client.gmbVerified ?? false)
+      setGmbNote(client.gmbNote ?? '')
     }
   }, [client])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setSubmitError('')
+    let portalPasswordHash: string | undefined
+    if (portalPin.trim()) {
+      try {
+        portalPasswordHash = await hashPin(portalPin.trim())
+      } catch (err) {
+        setSubmitError(
+          'Could not set portal PIN. Make sure you’re on a secure connection (https or localhost).'
+        )
+        return
+      }
+    } else {
+      portalPasswordHash = client?.portalPasswordHash
+    }
     const emails = emailsStr
       .split(',')
       .map((s) => s.trim())
       .filter(Boolean)
     const fee = parseFloat(hostingFeeMonthly) || 0
-    const portalPasswordHash =
-      portalPin.trim() ? await hashPin(portalPin.trim()) : (client?.portalPasswordHash ?? undefined)
     const payload = {
       name: name.trim(),
       vercelUrl: vercelUrl.trim(),
@@ -68,18 +83,25 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
       gmbProfileName: gmbProfileName.trim() || undefined,
       gmbLocation: gmbLocation.trim() || undefined,
       gmbVerified,
+      gmbNote: gmbNote.trim() || undefined,
       portalPasswordHash,
     }
-    if (client) {
-      onSave({ ...client, ...payload })
-    } else {
-      onSave({
-        id: '',
-        ...payload,
-        createdAt: '',
-        updatedAt: '',
-      } as Client)
+    try {
+      if (client) {
+        onSave({ ...client, ...payload })
+      } else {
+        onSave({
+          id: '',
+          ...payload,
+          createdAt: '',
+          updatedAt: '',
+        } as Client)
+      }
+    } catch (err) {
+      setSubmitError('Failed to save client.')
+      return
     }
+    setPortalPin('')
   }
 
   return (
@@ -238,6 +260,16 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
           />
           <label htmlFor="gmbVerified" className="text-sm text-neutral-400">GMB verified</label>
         </div>
+        <div className="sm:col-span-2">
+          <label className="mb-1 block text-sm font-medium text-neutral-400">GMB note (e.g. suspended)</label>
+          <input
+            type="text"
+            value={gmbNote}
+            onChange={(e) => setGmbNote(e.target.value)}
+            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
+            placeholder="e.g. Suspended – not publicly visible"
+          />
+        </div>
         <div className="sm:col-span-2 border-t border-neutral-700 pt-4 mt-2">
           <span className="text-sm font-medium text-neutral-400">Client portal</span>
         </div>
@@ -253,6 +285,9 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
             className="w-full max-w-xs rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
             placeholder="4–8 digit PIN for client login"
           />
+          {submitError && (
+            <p className="mt-2 text-sm text-red-400">{submitError}</p>
+          )}
         </div>
         <div className="sm:col-span-2">
           <label className="mb-1 block text-sm font-medium text-neutral-400">

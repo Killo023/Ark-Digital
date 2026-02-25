@@ -27,6 +27,8 @@ export interface Client {
   gmbLocation?: string
   /** GMB profile verified */
   gmbVerified?: boolean
+  /** GMB note e.g. "Suspended – not publicly visible" */
+  gmbNote?: string
   /** Hashed PIN for client portal login (optional) */
   portalPasswordHash?: string
   createdAt: string

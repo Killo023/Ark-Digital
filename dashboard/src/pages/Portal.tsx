@@ -8,6 +8,9 @@ import {
   verifyPin,
 } from '../lib/portalAuth'
 
+const BANK_ACCOUNT = '9377209902'
+const BANK_NAME = 'Absa'
+
 function formatDate(iso: string | null): string {
   if (!iso) return '—'
   return new Date(iso).toLocaleDateString()
@@ -23,6 +26,25 @@ function getNextDue(
   return d.toLocaleDateString()
 }
 
+function CopyButton({ text, label }: { text: string; label: string }) {
+  const [copied, setCopied] = useState(false)
+  const copy = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="rounded border border-neutral-600 px-2 py-1 text-xs text-neutral-400 hover:bg-neutral-800 hover:text-white"
+    >
+      {copied ? 'Copied!' : label}
+    </button>
+  )
+}
+
 export default function Portal() {
   const [client, setClient] = useState<Client | null>(null)
   const [loading, setLoading] = useState(true)
@@ -30,6 +52,7 @@ export default function Portal() {
   const [clientId, setClientId] = useState('')
   const [pin, setPin] = useState('')
   const [error, setError] = useState('')
+  const [showBankingDetails, setShowBankingDetails] = useState(false)
 
   const clientsWithPortal = clientStore
     .getAll()
@@ -79,6 +102,7 @@ export default function Portal() {
     setClientId('')
     setPin('')
     setError('')
+    setShowBankingDetails(false)
   }
 
   if (loading) {
@@ -91,9 +115,10 @@ export default function Portal() {
 
   if (view === 'dashboard' && client) {
     const nextDue = getNextDue(client.lastPaymentDate, client.billingInterval ?? 'monthly')
+    const paymentReference = client.name
     return (
-      <div className="mx-auto max-w-2xl">
-        <div className="mb-6 flex items-center justify-between">
+      <div className="mx-auto max-w-2xl space-y-6">
+        <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-white">Your account</h1>
           <button
             type="button"
@@ -103,43 +128,15 @@ export default function Portal() {
             Log out
           </button>
         </div>
-        <div className="space-y-6 rounded-xl border border-neutral-800 bg-neutral-900/50 p-6">
-          <div>
-            <h2 className="text-lg font-medium text-white">{client.name}</h2>
-            <p className="text-sm text-neutral-500">Client portal · Ark Digital</p>
-          </div>
 
-          {client.domain && (
+        {/* Summary card */}
+        <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-5">
+          <h2 className="text-lg font-medium text-white">{client.name}</h2>
+          <p className="text-sm text-neutral-500">Client portal · Ark Digital</p>
+          <div className="mt-4 flex flex-wrap gap-6">
             <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
-                Website
-              </p>
-              <a
-                href={`https://${client.domain}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-1 block text-white underline decoration-neutral-600 underline-offset-2 hover:decoration-neutral-500"
-              >
-                {client.domain}
-              </a>
-            </div>
-          )}
-
-          {client.emails.length > 0 && (
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
-                Emails
-              </p>
-              <p className="mt-1 text-neutral-300">{client.emails.join(', ')}</p>
-            </div>
-          )}
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
-                Hosting
-              </p>
-              <p className="mt-1 text-white">
+              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Hosting</p>
+              <p className="mt-0.5 text-white">
                 {client.currency} {client.hostingFeeMonthly}/mo
                 {(client.billingInterval ?? 'monthly') === 'quarterly' && (
                   <span className="text-neutral-500"> (billed quarterly)</span>
@@ -147,40 +144,100 @@ export default function Portal() {
               </p>
             </div>
             <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
-                Last payment
-              </p>
-              <p className="mt-1 text-neutral-300">{formatDate(client.lastPaymentDate)}</p>
+              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Next due</p>
+              <p className="mt-0.5 text-white">{nextDue}</p>
             </div>
             <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
-                Next due
-              </p>
-              <p className="mt-1 text-neutral-300">{nextDue}</p>
+              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Last payment</p>
+              <p className="mt-0.5 text-neutral-300">{formatDate(client.lastPaymentDate)}</p>
             </div>
           </div>
+        </div>
 
-          {client.gmbProfileName && (
+        {/* Pay hosting – banking details on click */}
+        <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-5">
+          <div className="flex items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
-                Google Business Profile
+              <h3 className="font-medium text-white">Pay hosting</h3>
+              <p className="text-sm text-neutral-500">View banking details to make a payment</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowBankingDetails((v) => !v)}
+              className="shrink-0 rounded-lg bg-white px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-neutral-200"
+            >
+              {showBankingDetails ? 'Hide details' : 'View banking details'}
+            </button>
+          </div>
+          {showBankingDetails && (
+            <div className="mt-4 rounded-lg border border-neutral-700 bg-neutral-800/50 p-4 font-mono text-sm">
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-neutral-500">Account:</span>
+                  <span className="text-white">{BANK_ACCOUNT}</span>
+                  <CopyButton text={BANK_ACCOUNT} label="Copy" />
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-neutral-500">Bank:</span>
+                  <span className="text-white">{BANK_NAME}</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-neutral-500">Reference:</span>
+                  <span className="text-white">{paymentReference}</span>
+                  <CopyButton text={paymentReference} label="Copy reference" />
+                </div>
+              </div>
+              <p className="mt-3 text-xs text-neutral-500">
+                Use <strong className="text-neutral-400">{paymentReference}</strong> as the payment reference so we can match your payment.
               </p>
-              <p className="mt-1 text-neutral-300">{client.gmbProfileName}</p>
-              {client.gmbLocation && (
-                <p className="mt-0.5 text-sm text-neutral-500">{client.gmbLocation}</p>
-              )}
             </div>
           )}
+        </div>
 
-          <div className="border-t border-neutral-800 pt-4">
-            <p className="text-sm text-neutral-500">Need help or want to make changes?</p>
-            <a
-              href="mailto:info@arkdigital.solutions"
-              className="mt-2 inline-block text-white underline decoration-neutral-600 underline-offset-2 hover:decoration-neutral-500"
-            >
-              Contact Ark Digital
-            </a>
+        {/* Your services */}
+        <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-5">
+          <h3 className="mb-4 font-medium text-white">Your services</h3>
+          <div className="space-y-4">
+            {client.domain && (
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Website</p>
+                <a
+                  href={`https://${client.domain}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 block text-white underline decoration-neutral-600 underline-offset-2 hover:decoration-neutral-500"
+                >
+                  {client.domain}
+                </a>
+              </div>
+            )}
+            {client.emails.length > 0 && (
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Emails</p>
+                <p className="mt-1 text-neutral-300">{client.emails.join(', ')}</p>
+              </div>
+            )}
+            {client.gmbProfileName && (
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Google Business Profile</p>
+                <p className="mt-1 text-neutral-300">{client.gmbProfileName}</p>
+                {client.gmbLocation && (
+                  <p className="mt-0.5 text-sm text-neutral-500">{client.gmbLocation}</p>
+                )}
+              </div>
+            )}
           </div>
+        </div>
+
+        {/* Contact */}
+        <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-5">
+          <p className="text-sm text-neutral-500">Need help or want to make changes?</p>
+          <a
+            href="mailto:info@arkdigital.solutions"
+            className="mt-2 inline-block text-white underline decoration-neutral-600 underline-offset-2 hover:decoration-neutral-500"
+          >
+            Contact Ark Digital
+          </a>
         </div>
       </div>
     )

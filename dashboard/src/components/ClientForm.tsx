@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import type { Client } from '../types'
 import { hashPin } from '../lib/portalAuth'
-import { getPortalLinkFragment } from '../lib/portalLink'
+import { getPortalLinkQuery } from '../lib/portalLink'
 
 function getPortalUrl(client: Client): string {
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
   const path = (base ? base + '/' : '/') + 'portal/' + client.id
-  const fragment = getPortalLinkFragment(client)
-  return window.location.origin + path + fragment
+  const query = getPortalLinkQuery(client)
+  return window.location.origin + path + query
 }
 
 interface ClientFormProps {

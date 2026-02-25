@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Client, Payment } from '../types'
-import { getPortalLinkFragment } from '../lib/portalLink'
+import { getPortalLinkQuery } from '../lib/portalLink'
 
 interface ClientCardProps {
   client: Client
@@ -25,8 +25,8 @@ function formatDate(iso: string | null): string {
 function getPortalUrl(client: Client): string {
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
   const path = (base ? base + '/' : '/') + 'portal/' + client.id
-  const fragment = getPortalLinkFragment(client)
-  return window.location.origin + path + fragment
+  const query = getPortalLinkQuery(client)
+  return window.location.origin + path + query
 }
 
 function PortalLinkButton({ client, hasPortalAccess }: { client: Client; hasPortalAccess: boolean }) {

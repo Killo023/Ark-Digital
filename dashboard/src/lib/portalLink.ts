@@ -23,7 +23,8 @@ export function encodeClientInPortalLink(client: Client): string {
 export function decodeClientFromPortalLink(fragmentParam: string, expectedId: string): Client | null {
   if (!fragmentParam || !expectedId) return null
   try {
-    const base64 = fragmentParam.replace(/-/g, '+').replace(/_/g, '/')
+    let base64 = fragmentParam.replace(/-/g, '+').replace(/_/g, '/')
+    while (base64.length % 4) base64 += '='
     const json = decodeURIComponent(escape(atob(base64)))
     const client = JSON.parse(json) as Client
     if (client?.id !== expectedId || !client?.portalPasswordHash) return null
@@ -33,10 +34,34 @@ export function decodeClientFromPortalLink(fragmentParam: string, expectedId: st
   }
 }
 
+/** Query param is used so the payload survives when links are opened from email/apps (fragment is often stripped). */
+export function getPortalLinkQuery(client: Client): string {
+  if (!client.portalPasswordHash) return ''
+  const payload = encodeClientInPortalLink(client)
+  return payload ? `?${PARAM}=${encodeURIComponent(payload)}` : ''
+}
+
 export function getPortalLinkFragment(client: Client): string {
   if (!client.portalPasswordHash) return ''
   const payload = encodeClientInPortalLink(client)
   return payload ? `#${PARAM}=${payload}` : ''
+}
+
+/** Read client from URL: try query (?d=) first, then fragment (#d=). */
+export function getClientFromUrl(expectedId: string): Client | null {
+  if (typeof window === 'undefined') return null
+  const search = new URLSearchParams(window.location.search)
+  const fromQuery = search.get(PARAM)
+  if (fromQuery) {
+    try {
+      const raw = decodeURIComponent(fromQuery.replace(/ /g, '+'))
+      const decoded = decodeClientFromPortalLink(raw, expectedId)
+      if (decoded) return decoded
+    } catch {
+      /* ignore */
+    }
+  }
+  return getClientFromFragment(window.location.hash, expectedId)
 }
 
 export function getClientFromFragment(hash: string, expectedId: string): Client | null {

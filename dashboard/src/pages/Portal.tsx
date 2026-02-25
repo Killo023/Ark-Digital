@@ -8,7 +8,7 @@ import {
   clearPortalSession,
   verifyPin,
 } from '../lib/portalAuth'
-import { getClientFromFragment } from '../lib/portalLink'
+import { getClientFromUrl } from '../lib/portalLink'
 
 const BANK_ACCOUNT = '9377209902'
 const BANK_NAME = 'Absa'
@@ -82,10 +82,7 @@ export default function Portal() {
     .getAll()
     .filter((c) => c.portalPasswordHash)
 
-  const clientFromLink =
-    urlClientId && typeof window !== 'undefined'
-      ? getClientFromFragment(window.location.hash, urlClientId)
-      : null
+  const clientFromLink = urlClientId ? getClientFromUrl(urlClientId) : null
   const directLinkClient = clientFromLink ?? (urlClientId ? clientStore.get(urlClientId) : null)
 
   useEffect(() => {

@@ -153,7 +153,7 @@ export default function ClientCard({ client, onEdit, onDelete }: ClientCardProps
             )}
           </div>
         )}
-        {(client.gmbProfileName || client.gmbLocation) && (
+        {(client.gmbProfileName || client.gmbLocation || client.gmbNote) && (
           <div className="rounded border border-neutral-700 bg-neutral-800/50 px-2 py-1.5 text-xs">
             <span className="text-neutral-500">GMB:</span>{' '}
             <span className="text-neutral-300">{client.gmbProfileName || 'Profile'}</span>
@@ -167,6 +167,9 @@ export default function ClientCard({ client, onEdit, onDelete }: ClientCardProps
                 </svg>
                 Verified
               </span>
+            )}
+            {client.gmbNote && (
+              <span className="mt-0.5 block text-amber-400">{client.gmbNote}</span>
             )}
           </div>
         )}

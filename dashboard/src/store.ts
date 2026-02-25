@@ -25,7 +25,7 @@ const defaultClients: Client[] = [
     name: 'Shepherd Studios',
     vercelUrl: 'shepherd-studios-ten.vercel.app',
     githubRepo: 'Killo023/Shepherd-studios',
-    domain: '',
+    domain: 'shepherdstudios.co.za',
     emails: [],
     hostingFeeMonthly: 0,
     billingInterval: 'monthly',
@@ -33,6 +33,10 @@ const defaultClients: Client[] = [
     lastPaymentDate: '2025-01-21',
     lastDeployNote: 'Replace process circle diagram with linear step cards layout',
     status: 'active',
+    gmbProfileName: 'Shepherd Studios',
+    gmbLocation: 'Johannesburg, South Africa',
+    gmbVerified: false,
+    gmbNote: 'Suspended – not publicly visible',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   },
@@ -184,7 +188,7 @@ export const clientStore = {
     if (!stored.length) return defaultClients
     let changed = false
     const domainByClientName: Record<string, string> = {
-      'Shepherd Studios': '',
+      'Shepherd Studios': 'shepherdstudios.co.za',
       'Steadfast': 'steadfasttactical.co.za',
       'Chernelang Physio': 'chernelangphysio.co.za',
       'Skainet': 'skainetcleaning.co.za',
@@ -197,10 +201,11 @@ export const clientStore = {
       'Ark Digital': ['info@arkdigital.solutions'],
       'Underrated Security': ['info@underratedsecurity.com', 'cylehendricks@underratedsecurity.com'],
     }
-    const gmbByClientName: Record<string, { name: string; location: string; verified: boolean }> = {
+    const gmbByClientName: Record<string, { name: string; location: string; verified: boolean; note?: string }> = {
       'Ark Digital': { name: 'Ark Digital', location: 'London, UK, South Africa and 2 other areas', verified: true },
       'Chernelang Physio': { name: 'Cherne Langeveldt Physiotherapy', location: '246 Vorster Avenue, Glenvista, Johannesburg, 1448, South Africa', verified: true },
       'Steadfast': { name: 'Steadfast Tactical', location: 'South Africa, Gauteng, South Africa', verified: true },
+      'Shepherd Studios': { name: 'Shepherd Studios', location: 'Johannesburg, South Africa', verified: false, note: 'Suspended – not publicly visible' },
     }
     stored.forEach((c) => {
       const wantDomain = domainByClientName[c.name]
@@ -232,11 +237,17 @@ export const clientStore = {
         }
       }
       const wantGmb = gmbByClientName[c.name]
-      if (wantGmb && !c.gmbProfileName) {
-        c.gmbProfileName = wantGmb.name
-        c.gmbLocation = wantGmb.location
-        c.gmbVerified = wantGmb.verified
-        changed = true
+      if (wantGmb) {
+        const missingName = !(c.gmbProfileName?.trim())
+        const missingLocation = !(c.gmbLocation?.trim())
+        const missingNote = wantGmb.note && !(c.gmbNote?.trim())
+        if (missingName || missingLocation || missingNote) {
+          if (missingName) c.gmbProfileName = wantGmb.name
+          if (missingLocation) c.gmbLocation = wantGmb.location
+          c.gmbVerified = wantGmb.verified
+          if (wantGmb.note) c.gmbNote = wantGmb.note
+          changed = true
+        }
       }
     })
     const goDaddyMigrated = localStorage.getItem(GODADDY_DOMAINS_MIGRATION_KEY)

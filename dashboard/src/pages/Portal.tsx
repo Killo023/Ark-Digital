@@ -8,6 +8,7 @@ import {
   clearPortalSession,
   verifyPin,
 } from '../lib/portalAuth'
+import { getClientFromFragment } from '../lib/portalLink'
 
 const BANK_ACCOUNT = '9377209902'
 const BANK_NAME = 'Absa'
@@ -81,6 +82,12 @@ export default function Portal() {
     .getAll()
     .filter((c) => c.portalPasswordHash)
 
+  const clientFromLink =
+    urlClientId && typeof window !== 'undefined'
+      ? getClientFromFragment(window.location.hash, urlClientId)
+      : null
+  const directLinkClient = clientFromLink ?? (urlClientId ? clientStore.get(urlClientId) : null)
+
   useEffect(() => {
     if (isDirectLink && urlClientId) setClientId(urlClientId)
   }, [isDirectLink, urlClientId])
@@ -102,7 +109,7 @@ export default function Portal() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    const c = clientStore.get(clientId)
+    const c = isDirectLink && directLinkClient ? directLinkClient : clientStore.get(clientId)
     if (!c) {
       setError('Invalid client.')
       return
@@ -329,7 +336,6 @@ export default function Portal() {
     )
   }
 
-  const directLinkClient = urlClientId ? clientStore.get(urlClientId) : null
   const directLinkValid = isDirectLink && directLinkClient?.portalPasswordHash
 
   if (isDirectLink && urlClientId) {
@@ -352,7 +358,8 @@ export default function Portal() {
             <h1 className="text-2xl font-semibold text-white">Client portal</h1>
           </div>
           <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 px-5 py-6 text-sm text-neutral-400">
-            Portal access is not set up for this account yet. Please contact Ark Digital to get your login.
+            <p>Portal access is not set up for this account yet, or this link was copied before your PIN was set.</p>
+            <p className="mt-2">Please ask your account manager to send you a <strong className="text-neutral-300">new portal link</strong> (they should copy it again from the dashboard after saving your PIN).</p>
           </div>
         </div>
       )

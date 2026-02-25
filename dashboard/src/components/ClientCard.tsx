@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Client, Payment } from '../types'
+import { getPortalLinkFragment } from '../lib/portalLink'
 
 interface ClientCardProps {
   client: Client
@@ -21,15 +22,17 @@ function formatDate(iso: string | null): string {
   return d.toLocaleDateString()
 }
 
-function getPortalUrl(clientId: string): string {
+function getPortalUrl(client: Client): string {
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
-  return window.location.origin + (base ? base + '/' : '/') + 'portal/' + clientId
+  const path = (base ? base + '/' : '/') + 'portal/' + client.id
+  const fragment = getPortalLinkFragment(client)
+  return window.location.origin + path + fragment
 }
 
-function PortalLinkButton({ clientId, hasPortalAccess }: { clientId: string; hasPortalAccess: boolean }) {
+function PortalLinkButton({ client, hasPortalAccess }: { client: Client; hasPortalAccess: boolean }) {
   const [copied, setCopied] = useState(false)
   const copy = () => {
-    const url = getPortalUrl(clientId)
+    const url = getPortalUrl(client)
     navigator.clipboard.writeText(url).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
@@ -44,7 +47,7 @@ function PortalLinkButton({ clientId, hasPortalAccess }: { clientId: string; has
         copy()
       }}
       className="rounded bg-neutral-700 px-2 py-1 text-xs font-medium text-neutral-400 hover:bg-neutral-600 hover:text-white"
-      title={hasPortalAccess ? 'Copy portal link to send to this client' : 'Copy link (set Portal PIN in Edit to activate)'}
+      title={hasPortalAccess ? 'Copy portal link to send to this client (link includes login data)' : 'Copy link (set Portal PIN in Edit to activate)'}
     >
       {copied ? 'Copied!' : 'Copy portal link'}
     </button>
@@ -124,7 +127,7 @@ export default function ClientCard({ client, onEdit, onDelete, recentPayments = 
       <div className="flex items-start justify-between pr-20">
         <div className="flex items-center gap-2 flex-wrap">
           <h2 className="font-semibold text-white">{client.name}</h2>
-          <PortalLinkButton clientId={client.id} hasPortalAccess={Boolean(client.portalPasswordHash)} />
+          <PortalLinkButton client={client} hasPortalAccess={Boolean(client.portalPasswordHash)} />
         </div>
         <span className={`text-xs font-medium ${statusColor}`}>{client.status}</span>
       </div>

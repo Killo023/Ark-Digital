@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
 import type { Client } from '../types'
 import { hashPin } from '../lib/portalAuth'
+import { getPortalLinkFragment } from '../lib/portalLink'
 
-function getPortalUrl(clientId: string): string {
+function getPortalUrl(client: Client): string {
   const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
-  return window.location.origin + (base ? base + '/' : '/') + 'portal/' + clientId
+  const path = (base ? base + '/' : '/') + 'portal/' + client.id
+  const fragment = getPortalLinkFragment(client)
+  return window.location.origin + path + fragment
 }
 
 interface ClientFormProps {
@@ -299,7 +302,7 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
               <button
                 type="button"
                 onClick={() => {
-                  navigator.clipboard.writeText(getPortalUrl(client.id)).then(() => {
+                  navigator.clipboard.writeText(getPortalUrl(client)).then(() => {
                     setPortalLinkCopied(true)
                     setTimeout(() => setPortalLinkCopied(false), 2000)
                   })

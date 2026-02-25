@@ -26,7 +26,7 @@ function getPortalUrl(clientId: string): string {
   return window.location.origin + (base ? base + '/' : '/') + 'portal/' + clientId
 }
 
-function PortalLinkButton({ clientId }: { clientId: string }) {
+function PortalLinkButton({ clientId, hasPortalAccess }: { clientId: string; hasPortalAccess: boolean }) {
   const [copied, setCopied] = useState(false)
   const copy = () => {
     const url = getPortalUrl(clientId)
@@ -43,10 +43,10 @@ function PortalLinkButton({ clientId }: { clientId: string }) {
         e.stopPropagation()
         copy()
       }}
-      className="rounded bg-neutral-700 px-1.5 py-0.5 text-[10px] font-medium text-neutral-400 hover:bg-neutral-600 hover:text-white"
-      title="Copy portal link to send to this client"
+      className="rounded bg-neutral-700 px-2 py-1 text-xs font-medium text-neutral-400 hover:bg-neutral-600 hover:text-white"
+      title={hasPortalAccess ? 'Copy portal link to send to this client' : 'Copy link (set Portal PIN in Edit to activate)'}
     >
-      {copied ? 'Copied!' : 'Portal link'}
+      {copied ? 'Copied!' : 'Copy portal link'}
     </button>
   )
 }
@@ -122,11 +122,9 @@ export default function ClientCard({ client, onEdit, onDelete, recentPayments = 
       </div>
 
       <div className="flex items-start justify-between pr-20">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <h2 className="font-semibold text-white">{client.name}</h2>
-          {client.portalPasswordHash && (
-            <PortalLinkButton clientId={client.id} />
-          )}
+          <PortalLinkButton clientId={client.id} hasPortalAccess={Boolean(client.portalPasswordHash)} />
         </div>
         <span className={`text-xs font-medium ${statusColor}`}>{client.status}</span>
       </div>

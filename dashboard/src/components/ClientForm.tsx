@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react'
 import type { Client } from '../types'
 import { hashPin } from '../lib/portalAuth'
 
+function getPortalUrl(clientId: string): string {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
+  return window.location.origin + (base ? base + '/' : '/') + 'portal/' + clientId
+}
+
 interface ClientFormProps {
   client?: Client
   onSave: (client: Client) => void
@@ -26,6 +31,7 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
   const [gmbNote, setGmbNote] = useState('')
   const [portalPin, setPortalPin] = useState('')
   const [submitError, setSubmitError] = useState('')
+  const [portalLinkCopied, setPortalLinkCopied] = useState(false)
 
   useEffect(() => {
     if (client) {
@@ -287,6 +293,23 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
           />
           {submitError && (
             <p className="mt-2 text-sm text-red-400">{submitError}</p>
+          )}
+          {client?.id && (
+            <div className="mt-3 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(getPortalUrl(client.id)).then(() => {
+                    setPortalLinkCopied(true)
+                    setTimeout(() => setPortalLinkCopied(false), 2000)
+                  })
+                }}
+                className="rounded-lg border border-neutral-600 px-3 py-1.5 text-sm font-medium text-neutral-400 hover:bg-neutral-800 hover:text-white"
+              >
+                {portalLinkCopied ? 'Copied!' : 'Copy portal link'}
+              </button>
+              <span className="text-xs text-neutral-500">Send this link to the client; they’ll only see their login.</span>
+            </div>
           )}
         </div>
         <div className="sm:col-span-2">

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { Client } from '../types'
 import type { Payment } from '../types'
 
@@ -6,14 +6,19 @@ interface PaymentFormProps {
   clients: Client[]
   onSave: (payment: Omit<Payment, 'id' | 'createdAt'>) => void
   onCancel: () => void
+  defaultClientId?: string
 }
 
-export default function PaymentForm({ clients, onSave, onCancel }: PaymentFormProps) {
-  const [clientId, setClientId] = useState('')
+export default function PaymentForm({ clients, onSave, onCancel, defaultClientId }: PaymentFormProps) {
+  const [clientId, setClientId] = useState(defaultClientId ?? '')
   const [amount, setAmount] = useState('')
   const [currency, setCurrency] = useState('ZAR')
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
   const [note, setNote] = useState('')
+
+  useEffect(() => {
+    if (defaultClientId) setClientId(defaultClientId)
+  }, [defaultClientId])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { clientStore } from '../store'
+import { useParams } from 'react-router-dom'
+import { clientStore, paymentStore } from '../store'
 import type { Client } from '../types'
 import {
   getPortalClientId,
@@ -46,10 +47,13 @@ function CopyButton({ text, label }: { text: string; label: string }) {
 }
 
 export default function Portal() {
+  const { clientId: urlClientId } = useParams<{ clientId?: string }>()
+  const isDirectLink = Boolean(urlClientId?.trim())
+
   const [client, setClient] = useState<Client | null>(null)
   const [loading, setLoading] = useState(true)
   const [view, setView] = useState<'login' | 'dashboard'>('login')
-  const [clientId, setClientId] = useState('')
+  const [clientId, setClientId] = useState(urlClientId ?? '')
   const [pin, setPin] = useState('')
   const [error, setError] = useState('')
   const [showBankingDetails, setShowBankingDetails] = useState(false)
@@ -57,6 +61,10 @@ export default function Portal() {
   const clientsWithPortal = clientStore
     .getAll()
     .filter((c) => c.portalPasswordHash)
+
+  useEffect(() => {
+    if (isDirectLink && urlClientId) setClientId(urlClientId)
+  }, [isDirectLink, urlClientId])
 
   useEffect(() => {
     const id = getPortalClientId()
@@ -99,7 +107,7 @@ export default function Portal() {
     clearPortalSession()
     setClient(null)
     setView('login')
-    setClientId('')
+    setClientId(isDirectLink && urlClientId ? urlClientId : '')
     setPin('')
     setError('')
     setShowBankingDetails(false)
@@ -116,6 +124,13 @@ export default function Portal() {
   if (view === 'dashboard' && client) {
     const nextDue = getNextDue(client.lastPaymentDate, client.billingInterval ?? 'monthly')
     const paymentReference = client.name
+    const clientPayments = paymentStore
+      .getAll()
+      .filter((p) => p.clientId === client.id)
+      .sort((a, b) => (b.date > a.date ? 1 : -1))
+    const isQuarterly = (client.billingInterval ?? 'monthly') === 'quarterly'
+    const amountDue = (client.hostingFeeMonthly ?? 0) * (isQuarterly ? 3 : 1)
+    const currency = client.currency ?? 'ZAR'
     return (
       <div className="mx-auto max-w-2xl space-y-6">
         <div className="flex items-center justify-between">
@@ -135,17 +150,26 @@ export default function Portal() {
           <p className="text-sm text-neutral-500">Client portal · Ark Digital</p>
           <div className="mt-4 flex flex-wrap gap-6">
             <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Hosting</p>
+              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Amount due</p>
               <p className="mt-0.5 text-white">
+                {currency} {amountDue.toLocaleString()}
+                {isQuarterly && (
+                  <span className="text-neutral-500"> (quarterly)</span>
+                )}
+              </p>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Pay by</p>
+              <p className="mt-0.5 text-white">{nextDue}</p>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Hosting</p>
+              <p className="mt-0.5 text-neutral-300">
                 {client.currency} {client.hostingFeeMonthly}/mo
                 {(client.billingInterval ?? 'monthly') === 'quarterly' && (
                   <span className="text-neutral-500"> (billed quarterly)</span>
                 )}
               </p>
-            </div>
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Next due</p>
-              <p className="mt-0.5 text-white">{nextDue}</p>
             </div>
             <div>
               <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">Last payment</p>
@@ -191,6 +215,29 @@ export default function Portal() {
                 Use <strong className="text-neutral-400">{paymentReference}</strong> as the payment reference so we can match your payment.
               </p>
             </div>
+          )}
+        </div>
+
+        {/* Payment history */}
+        <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-5">
+          <h3 className="mb-4 font-medium text-white">Payment history</h3>
+          {clientPayments.length === 0 ? (
+            <p className="text-sm text-neutral-500">No payments recorded yet.</p>
+          ) : (
+            <ul className="space-y-2">
+              {clientPayments.map((p) => (
+                <li
+                  key={p.id}
+                  className="flex flex-wrap items-center justify-between gap-2 text-sm"
+                >
+                  <span className="text-neutral-300">
+                    {p.currency} {p.amount.toLocaleString()}
+                    {p.note && <span className="ml-1 text-neutral-500">· {p.note}</span>}
+                  </span>
+                  <span className="text-neutral-500">{p.date}</span>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
 
@@ -243,15 +290,76 @@ export default function Portal() {
     )
   }
 
+  const directLinkClient = urlClientId ? clientStore.get(urlClientId) : null
+  const directLinkValid = isDirectLink && directLinkClient?.portalPasswordHash
+
+  if (isDirectLink && urlClientId) {
+    if (!directLinkClient) {
+      return (
+        <div className="mx-auto max-w-sm">
+          <div className="mb-8">
+            <h1 className="text-2xl font-semibold text-white">Client portal</h1>
+          </div>
+          <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 px-5 py-6 text-sm text-neutral-400">
+            This link is invalid or has been removed. If you need access, please contact Ark Digital.
+          </div>
+        </div>
+      )
+    }
+    if (!directLinkClient.portalPasswordHash) {
+      return (
+        <div className="mx-auto max-w-sm">
+          <div className="mb-8">
+            <h1 className="text-2xl font-semibold text-white">Client portal</h1>
+          </div>
+          <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 px-5 py-6 text-sm text-neutral-400">
+            Portal access is not set up for this account yet. Please contact Ark Digital to get your login.
+          </div>
+        </div>
+      )
+    }
+  }
+
   return (
     <div className="mx-auto max-w-sm">
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-white">Client portal</h1>
+        <h1 className="text-2xl font-semibold text-white">
+          {directLinkValid ? `Log in to ${directLinkClient!.name}` : 'Client portal'}
+        </h1>
         <p className="mt-1 text-sm text-neutral-500">
-          Log in to view your account with Ark Digital
+          {directLinkValid
+            ? 'Enter your PIN to view your account'
+            : 'Log in to view your account with Ark Digital'}
         </p>
       </div>
-      {clientsWithPortal.length === 0 ? (
+      {directLinkValid ? (
+        <form
+          onSubmit={handleLogin}
+          className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6"
+        >
+          <div className="mb-4">
+            <label className="mb-1 block text-sm font-medium text-neutral-400">PIN</label>
+            <input
+              type="password"
+              value={pin}
+              onChange={(e) => setPin(e.target.value)}
+              required
+              autoComplete="off"
+              className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
+              placeholder="Your portal PIN"
+            />
+          </div>
+          {error && (
+            <p className="mb-4 text-sm text-red-400">{error}</p>
+          )}
+          <button
+            type="submit"
+            className="w-full rounded-lg bg-white py-2.5 text-sm font-medium text-neutral-900 hover:bg-neutral-200"
+          >
+            Log in
+          </button>
+        </form>
+      ) : clientsWithPortal.length === 0 ? (
         <div className="rounded-xl border border-amber-900/50 bg-amber-950/30 px-5 py-6 text-sm">
           <p className="font-medium text-amber-200">No clients have portal access yet</p>
           <p className="mt-2 text-neutral-400">

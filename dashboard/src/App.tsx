@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, NavLink, useLocation } from 'react-router-dom'
+import Overview from './pages/Overview'
 import Clients from './pages/Clients'
 import Finance from './pages/Finance'
 import Portal from './pages/Portal'
@@ -30,7 +31,7 @@ function AppHeader() {
               to="/"
               className="rounded-md px-3 py-2 text-sm font-medium text-neutral-400 hover:bg-neutral-800 hover:text-white"
             >
-              Business dashboard
+              Dashboard
             </NavLink>
           </div>
         </div>
@@ -44,6 +45,18 @@ function AppHeader() {
         <nav className="flex gap-1">
           <NavLink
             to="/"
+            className={({ isActive }) =>
+              `rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                isActive
+                  ? 'bg-neutral-800 text-white'
+                  : 'text-neutral-400 hover:bg-neutral-800/50 hover:text-neutral-200'
+              }`
+            }
+          >
+            Overview
+          </NavLink>
+          <NavLink
+            to="/clients"
             className={({ isActive }) =>
               `rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                 isActive
@@ -91,9 +104,11 @@ function App() {
         <AppHeader />
         <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
           <Routes>
-            <Route path="/" element={<Clients />} />
+            <Route path="/" element={<Overview />} />
+            <Route path="/clients" element={<Clients />} />
             <Route path="/finance" element={<Finance />} />
             <Route path="/portal" element={<Portal />} />
+            <Route path="/portal/:clientId" element={<Portal />} />
           </Routes>
         </main>
       </div>

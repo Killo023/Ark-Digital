@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { clientStore, expenseStore, paymentStore } from '../store'
 import type { Expense, Payment } from '../types'
 import ExpenseForm from '../components/ExpenseForm'
@@ -12,11 +13,26 @@ const CATEGORY_LABELS: Record<Expense['category'], string> = {
 }
 
 export default function Finance() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const logClientId = searchParams.get('log') ?? ''
   const [expenses, setExpenses] = useState<Expense[]>(() => expenseStore.getAll())
   const [payments, setPayments] = useState<Payment[]>(() => paymentStore.getAll())
   const clients = useMemo(() => clientStore.getAll(), [])
   const [showExpenseForm, setShowExpenseForm] = useState(false)
   const [showPaymentForm, setShowPaymentForm] = useState(false)
+  const [paymentFormClientId, setPaymentFormClientId] = useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    if (logClientId && clients.some((c) => c.id === logClientId)) {
+      setPaymentFormClientId(logClientId)
+      setShowPaymentForm(true)
+      setSearchParams((prev) => {
+        const next = new URLSearchParams(prev)
+        next.delete('log')
+        return next
+      }, { replace: true })
+    }
+  }, [logClientId, clients, setSearchParams])
 
   const refresh = () => {
     setExpenses(expenseStore.getAll())
@@ -76,6 +92,12 @@ export default function Finance() {
     if (client) clientStore.update(p.clientId, { lastPaymentDate: p.date })
     refresh()
     setShowPaymentForm(false)
+    setPaymentFormClientId(undefined)
+  }
+
+  const closePaymentForm = () => {
+    setShowPaymentForm(false)
+    setPaymentFormClientId(undefined)
   }
 
   const removeExpense = (id: string) => {
@@ -150,7 +172,8 @@ export default function Finance() {
         <PaymentForm
           clients={clients}
           onSave={addPayment}
-          onCancel={() => setShowPaymentForm(false)}
+          onCancel={closePaymentForm}
+          defaultClientId={paymentFormClientId}
         />
       )}
       {showExpenseForm && (

@@ -1,9 +1,12 @@
-import type { Client } from '../types'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import type { Client, Payment } from '../types'
 
 interface ClientCardProps {
   client: Client
   onEdit: () => void
   onDelete: () => void
+  recentPayments?: Payment[]
 }
 
 function formatDate(iso: string | null): string {
@@ -16,6 +19,36 @@ function formatDate(iso: string | null): string {
   if (diff < 86400_000) return `${Math.floor(diff / 3600_000)}h ago`
   if (diff < 86400_000 * 31) return `${Math.floor(diff / 86400_000)}d ago`
   return d.toLocaleDateString()
+}
+
+function getPortalUrl(clientId: string): string {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || ''
+  return window.location.origin + (base ? base + '/' : '/') + 'portal/' + clientId
+}
+
+function PortalLinkButton({ clientId }: { clientId: string }) {
+  const [copied, setCopied] = useState(false)
+  const copy = () => {
+    const url = getPortalUrl(clientId)
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+  return (
+    <button
+      type="button"
+      onClick={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        copy()
+      }}
+      className="rounded bg-neutral-700 px-1.5 py-0.5 text-[10px] font-medium text-neutral-400 hover:bg-neutral-600 hover:text-white"
+      title="Copy portal link to send to this client"
+    >
+      {copied ? 'Copied!' : 'Portal link'}
+    </button>
+  )
 }
 
 function getNextDueLabel(
@@ -37,7 +70,7 @@ function getNextDueLabel(
   return `Due ${due.toLocaleDateString()}`
 }
 
-export default function ClientCard({ client, onEdit, onDelete }: ClientCardProps) {
+export default function ClientCard({ client, onEdit, onDelete, recentPayments = [] }: ClientCardProps) {
   const hasVercel = client.vercelUrl?.trim()
   const hasGithub = client.githubRepo?.trim()
   const vercelLink = hasVercel
@@ -92,9 +125,7 @@ export default function ClientCard({ client, onEdit, onDelete }: ClientCardProps
         <div className="flex items-center gap-2">
           <h2 className="font-semibold text-white">{client.name}</h2>
           {client.portalPasswordHash && (
-            <span className="rounded bg-neutral-700 px-1.5 py-0.5 text-[10px] font-medium text-neutral-400">
-              Portal
-            </span>
+            <PortalLinkButton clientId={client.id} />
           )}
         </div>
         <span className={`text-xs font-medium ${statusColor}`}>{client.status}</span>
@@ -193,7 +224,28 @@ export default function ClientCard({ client, onEdit, onDelete }: ClientCardProps
             </span>
           )
         })()}
+        {client.hostingFeeMonthly > 0 && (
+          <Link
+            to={`/finance?log=${client.id}`}
+            className="rounded px-2 py-0.5 font-medium text-neutral-400 hover:bg-neutral-800 hover:text-white"
+          >
+            Log payment
+          </Link>
+        )}
       </div>
+      {recentPayments.length > 0 && (
+        <div className="mt-3 border-t border-neutral-800 pt-2">
+          <p className="mb-1 text-xs font-medium text-neutral-500">Recent payments</p>
+          <ul className="space-y-0.5 text-xs text-neutral-400">
+            {recentPayments.slice(0, 3).map((p) => (
+              <li key={p.id}>
+                {p.currency} {p.amount.toLocaleString()} · {p.date}
+                {p.note && <span className="ml-1 text-neutral-500">({p.note})</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   )
 }

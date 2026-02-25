@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
-import { clientStore } from '../store'
-import type { Client } from '../types'
+import { clientStore, paymentStore } from '../store'
+import type { Client, Payment } from '../types'
 import ClientCard from '../components/ClientCard'
 import ClientForm from '../components/ClientForm'
 
@@ -9,13 +9,29 @@ export default function Clients() {
   const [showForm, setShowForm] = useState(false)
   const [editing, setEditing] = useState<Client | null>(null)
   const [filter, setFilter] = useState<'all' | 'active' | 'overdue' | 'churned'>('all')
+  const [searchQuery, setSearchQuery] = useState('')
 
   const refresh = () => setClients(clientStore.getAll())
+  const payments = useMemo(() => paymentStore.getAll(), [])
 
   const filtered = useMemo(() => {
-    if (filter === 'all') return clients
-    return clients.filter((c) => c.status === filter)
-  }, [clients, filter])
+    let list = filter === 'all' ? clients : clients.filter((c) => c.status === filter)
+    const q = searchQuery.trim().toLowerCase()
+    if (q) list = list.filter((c) => c.name.toLowerCase().includes(q))
+    return list
+  }, [clients, filter, searchQuery])
+
+  const paymentsByClient = useMemo(() => {
+    const map: Record<string, Payment[]> = {}
+    payments.forEach((p) => {
+      if (!map[p.clientId]) map[p.clientId] = []
+      map[p.clientId].push(p)
+    })
+    Object.keys(map).forEach((id) => {
+      map[id].sort((a, b) => (b.date > a.date ? 1 : -1))
+    })
+    return map
+  }, [payments])
 
   const handleSave = (client: Client) => {
     if (editing) {
@@ -50,7 +66,14 @@ export default function Clients() {
             Vercel projects, GoDaddy domains & emails, hosting fees
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <input
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search clients…"
+            className="rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-200 placeholder-neutral-500 focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600 w-48"
+          />
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value as typeof filter)}
@@ -92,6 +115,7 @@ export default function Clients() {
             client={client}
             onEdit={() => handleEdit(client)}
             onDelete={() => handleDelete(client.id)}
+            recentPayments={paymentsByClient[client.id]}
           />
         ))}
       </div>

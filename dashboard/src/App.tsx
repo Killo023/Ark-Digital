@@ -107,8 +107,8 @@ function App() {
             <Route path="/" element={<Overview />} />
             <Route path="/clients" element={<Clients />} />
             <Route path="/finance" element={<Finance />} />
-            <Route path="/portal" element={<Portal />} />
             <Route path="/portal/:clientId" element={<Portal />} />
+            <Route path="/portal" element={<Portal />} />
           </Routes>
         </main>
       </div>

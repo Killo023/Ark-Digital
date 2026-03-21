@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { clientStore } from '../store'
 import type { Client } from '../types'
+import { getPortalSlug } from '../lib/portalSlug'
 import {
   getPortalClientId,
   setPortalSession,
@@ -23,51 +25,48 @@ function getNextDue(
   return d.toLocaleDateString()
 }
 
+/** Find client by portal slug (from URL). */
+function getClientBySlug(slug: string | undefined): Client | null {
+  if (!slug) return null
+  const all = clientStore.getAll().filter((c) => c.portalPasswordHash)
+  return all.find((c) => getPortalSlug(c) === slug) ?? null
+}
+
 export default function Portal() {
+  const { slug } = useParams<{ slug: string }>()
+  const urlClient = getClientBySlug(slug)
   const [client, setClient] = useState<Client | null>(null)
   const [loading, setLoading] = useState(true)
   const [view, setView] = useState<'login' | 'dashboard'>('login')
-  const [clientId, setClientId] = useState('')
   const [pin, setPin] = useState('')
   const [error, setError] = useState('')
 
-  const clientsWithPortal = clientStore
-    .getAll()
-    .filter((c) => c.portalPasswordHash)
-
   useEffect(() => {
     const id = getPortalClientId()
-    if (id) {
-      const c = clientStore.get(id)
-      if (c) {
-        setClient(c)
-        setView('dashboard')
-      } else {
-        clearPortalSession()
-      }
+    if (id && urlClient && id === urlClient.id) {
+      setClient(urlClient)
+      setView('dashboard')
+    } else if (id) {
+      clearPortalSession()
     }
     setLoading(false)
-  }, [])
+  }, [urlClient?.id])
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!urlClient) return
     setError('')
-    const c = clientStore.get(clientId)
-    if (!c) {
-      setError('Invalid client.')
+    if (!urlClient.portalPasswordHash) {
+      setError('Portal access not set up.')
       return
     }
-    if (!c.portalPasswordHash) {
-      setError('Portal access not set up for this client.')
-      return
-    }
-    const ok = await verifyPin(pin, c.portalPasswordHash)
+    const ok = await verifyPin(pin, urlClient.portalPasswordHash)
     if (!ok) {
       setError('Incorrect PIN.')
       return
     }
-    setPortalSession(c.id)
-    setClient(c)
+    setPortalSession(urlClient.id)
+    setClient(urlClient)
     setView('dashboard')
     setPin('')
   }
@@ -76,9 +75,44 @@ export default function Portal() {
     clearPortalSession()
     setClient(null)
     setView('login')
-    setClientId('')
     setPin('')
     setError('')
+  }
+
+  // No slug = wrong or old link. Show contact message.
+  if (!slug) {
+    return (
+      <div className="mx-auto max-w-md text-center">
+        <h1 className="text-xl font-semibold text-white">Client portal</h1>
+        <p className="mt-4 text-neutral-400">
+          Your portal link was sent to you. If you need it again, contact your account manager.
+        </p>
+        <a
+          href="mailto:info@arkdigital.solutions"
+          className="mt-4 inline-block text-white underline decoration-neutral-600 underline-offset-2 hover:decoration-neutral-500"
+        >
+          Contact Ark Digital
+        </a>
+      </div>
+    )
+  }
+
+  // Invalid slug = no client found
+  if (!urlClient) {
+    return (
+      <div className="mx-auto max-w-md text-center">
+        <h1 className="text-xl font-semibold text-white">Invalid portal link</h1>
+        <p className="mt-4 text-neutral-400">
+          This link is not valid. Contact your account manager for the correct portal URL.
+        </p>
+        <a
+          href="mailto:info@arkdigital.solutions"
+          className="mt-4 inline-block text-white underline decoration-neutral-600 underline-offset-2 hover:decoration-neutral-500"
+        >
+          Contact Ark Digital
+        </a>
+      </div>
+    )
   }
 
   if (loading) {
@@ -189,7 +223,7 @@ export default function Portal() {
   return (
     <div className="mx-auto max-w-sm">
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-white">Client portal</h1>
+        <h1 className="text-2xl font-semibold text-white">{urlClient.name}</h1>
         <p className="mt-1 text-sm text-neutral-500">
           Log in to view your account with Ark Digital
         </p>
@@ -198,22 +232,6 @@ export default function Portal() {
         onSubmit={handleLogin}
         className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-6"
       >
-        <div className="mb-4">
-          <label className="mb-1 block text-sm font-medium text-neutral-400">Client</label>
-          <select
-            value={clientId}
-            onChange={(e) => setClientId(e.target.value)}
-            required
-            className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
-          >
-            <option value="">Select your business</option>
-            {clientsWithPortal.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-        </div>
         <div className="mb-4">
           <label className="mb-1 block text-sm font-medium text-neutral-400">PIN</label>
           <input

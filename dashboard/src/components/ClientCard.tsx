@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import type { Client } from '../types'
+import { getPortalUrl } from '../lib/portalSlug'
 
 interface ClientCardProps {
   client: Client
@@ -38,7 +40,15 @@ function getNextDueLabel(
 }
 
 export default function ClientCard({ client, onEdit, onDelete }: ClientCardProps) {
+  const [copied, setCopied] = useState(false)
   const hasVercel = client.vercelUrl?.trim()
+  const portalUrl = client.portalPasswordHash ? getPortalUrl(client) : ''
+  const copyPortalLink = () => {
+    if (!portalUrl) return
+    navigator.clipboard.writeText(portalUrl)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
   const hasGithub = client.githubRepo?.trim()
   const vercelLink = hasVercel
     ? client.vercelUrl.startsWith('http')
@@ -92,9 +102,14 @@ export default function ClientCard({ client, onEdit, onDelete }: ClientCardProps
         <div className="flex items-center gap-2">
           <h2 className="font-semibold text-white">{client.name}</h2>
           {client.portalPasswordHash && (
-            <span className="rounded bg-neutral-700 px-1.5 py-0.5 text-[10px] font-medium text-neutral-400">
-              Portal
-            </span>
+            <button
+              type="button"
+              onClick={copyPortalLink}
+              className="rounded bg-neutral-700 px-1.5 py-0.5 text-[10px] font-medium text-neutral-400 hover:bg-neutral-600 hover:text-white transition-colors"
+              title="Copy portal link"
+            >
+              {copied ? 'Copied!' : 'Portal'}
+            </button>
           )}
         </div>
         <span className={`text-xs font-medium ${statusColor}`}>{client.status}</span>

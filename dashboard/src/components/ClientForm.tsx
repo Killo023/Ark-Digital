@@ -24,6 +24,7 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
   const [gmbLocation, setGmbLocation] = useState('')
   const [gmbVerified, setGmbVerified] = useState(false)
   const [portalPin, setPortalPin] = useState('')
+  const [portalSlug, setPortalSlug] = useState('')
 
   useEffect(() => {
     if (client) {
@@ -41,6 +42,7 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
       setGmbProfileName(client.gmbProfileName ?? '')
       setGmbLocation(client.gmbLocation ?? '')
       setGmbVerified(client.gmbVerified ?? false)
+      setPortalSlug(client.portalSlug ?? '')
     }
   }, [client])
 
@@ -69,6 +71,7 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
       gmbLocation: gmbLocation.trim() || undefined,
       gmbVerified,
       portalPasswordHash,
+      portalSlug: portalSlug.trim() || undefined,
     }
     if (client) {
       onSave({ ...client, ...payload })
@@ -252,6 +255,18 @@ export default function ClientForm({ client, onSave, onCancel }: ClientFormProps
             autoComplete="new-password"
             className="w-full max-w-xs rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
             placeholder="4–8 digit PIN for client login"
+          />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="mb-1 block text-sm font-medium text-neutral-400">
+            Portal URL slug (optional)
+          </label>
+          <input
+            type="text"
+            value={portalSlug}
+            onChange={(e) => setPortalSlug(e.target.value)}
+            className="w-full max-w-xs rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none focus:ring-1 focus:ring-neutral-600"
+            placeholder="e.g. chernelang-physio (auto-generated if blank)"
           />
         </div>
         <div className="sm:col-span-2">

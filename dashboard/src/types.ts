@@ -29,6 +29,8 @@ export interface Client {
   gmbVerified?: boolean
   /** Hashed PIN for client portal login (optional) */
   portalPasswordHash?: string
+  /** Unique URL slug for client portal (e.g. chernelang-physio). Auto-generated if missing. */
+  portalSlug?: string
   createdAt: string
   updatedAt: string
 }

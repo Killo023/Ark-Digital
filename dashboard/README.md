@@ -18,6 +18,10 @@ A single-place dashboard to manage clients (Vercel-hosted sites), GoDaddy domain
 
 Data is stored in the browser (localStorage). No backend or API keys required to run it.
 
+**Access control:**
+- **Dashboard** (Clients, Finance) — Protected by owner password. Set `VITE_DASHBOARD_PASSWORD` (or `VITE_DASHBOARD_PASSWORD_HASH` for a SHA-256 hex hash) in Vercel env.
+- **Client portal** — Each client has a unique URL (e.g. `/portal/chernelang-physio`). Only that client can log in with their PIN. Don’t link the portal from the main website; send each client their link privately.
+
 ## Run locally
 
 ```bash

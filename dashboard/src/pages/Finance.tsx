@@ -74,7 +74,13 @@ export default function Finance() {
   const addPayment = (p: Omit<Payment, 'id' | 'createdAt'>) => {
     paymentStore.add(p)
     const client = clients.find((c) => c.id === p.clientId)
-    if (client) clientStore.update(p.clientId, { lastPaymentDate: p.date })
+    if (client) {
+      const periods = p.periodsCovered ?? 1
+      const monthsPerPeriod = client.billingInterval === 'quarterly' ? 3 : 1
+      const d = new Date(p.date)
+      d.setMonth(d.getMonth() + (periods - 1) * monthsPerPeriod)
+      clientStore.update(p.clientId, { lastPaymentDate: d.toISOString().slice(0, 10) })
+    }
     refresh()
     setShowPaymentForm(false)
   }
@@ -85,7 +91,27 @@ export default function Finance() {
   }
 
   const removePayment = (id: string) => {
+    const removed = payments.find((p) => p.id === id)
     paymentStore.remove(id)
+    if (removed) {
+      const remainingForClient = paymentStore
+        .getAll()
+        .filter((p) => p.clientId === removed.clientId)
+        .sort((a, b) => (b.date > a.date ? 1 : -1))
+      const client = clients.find((c) => c.id === removed.clientId)
+      const lastDate =
+        remainingForClient.length > 0 && client
+          ? (() => {
+              const p = remainingForClient[0]
+              const periods = p.periodsCovered ?? 1
+              const monthsPerPeriod = client.billingInterval === 'quarterly' ? 3 : 1
+              const d = new Date(p.date)
+              d.setMonth(d.getMonth() + (periods - 1) * monthsPerPeriod)
+              return d.toISOString().slice(0, 10)
+            })()
+          : null
+      clientStore.update(removed.clientId, { lastPaymentDate: lastDate })
+    }
     refresh()
   }
 
@@ -182,6 +208,11 @@ export default function Finance() {
                         <span className="ml-2 text-neutral-400">
                           {p.currency} {p.amount.toLocaleString()}
                         </span>
+                        {(p.periodsCovered ?? 1) > 1 && (
+                          <span className="ml-1.5 rounded bg-neutral-700 px-1.5 py-0.5 text-[10px] text-neutral-400" title="Periods covered">
+                            {(p.periodsCovered ?? 1)}×
+                          </span>
+                        )}
                         <span className="ml-2 text-neutral-500">{p.date}</span>
                       </div>
                       <button

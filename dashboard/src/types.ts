@@ -53,5 +53,7 @@ export interface Payment {
   currency: string
   date: string
   note: string
+  /** How many billing periods this payment covers (e.g. 3 months upfront). Default 1. */
+  periodsCovered?: number
   createdAt: string
 }

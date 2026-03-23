@@ -1,6 +1,6 @@
 # Ark Digital Website
 
-A modern, high-performance rebranding website for Ark Digital - a software firm focused on integrity, security, and navigating the flood of data.
+A modern, high-performance website for Ark Digital - specialists in custom business operation solutions: workflows, automation, and operational systems.
 
 ## Tech Stack
 

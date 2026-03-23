@@ -4,7 +4,7 @@ import { Shield, Compass, Anchor, Code, Users, Target } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Values",
-  description: "Our values guide everything we do. Integrity, stewardship, and excellence in software development.",
+  description: "Our values guide everything we do. Integrity, collaboration, and excellence in custom business operation solutions.",
 };
 
 export default function ValuesPage() {
@@ -12,12 +12,12 @@ export default function ValuesPage() {
     {
       icon: Anchor,
       title: "Innovation",
-      description: "We are committed to pioneering digital solutions that empower businesses to thrive in an ever-changing technological landscape. Innovation drives everything we do, from cutting-edge technology choices to creative problem-solving approaches.",
+      description: "We are committed to building operational solutions that help businesses run more efficiently. Innovation drives our approach—from how we design workflows to the tools and automation we implement.",
       details: [
-        "Pioneering digital solutions",
-        "Cutting-edge technology adoption",
-        "Creative problem-solving",
-        "Future-ready approaches",
+        "Operational solutions focused",
+        "Modern tooling & automation",
+        "Process-led problem-solving",
+        "Scalable, future-ready systems",
       ],
     },
     {
@@ -45,11 +45,11 @@ export default function ValuesPage() {
     {
       icon: Target,
       title: "Excellence",
-      description: "We strive to deliver exceptional services to our clients and partners, setting industry standards and driving impactful change. Excellence is reflected in every project, every line of code, and every client interaction.",
+      description: "We strive to deliver operational systems that perform. Excellence is reflected in every workflow we design, every system we build, and every client partnership.",
       details: [
-        "Exceptional service delivery",
-        "Industry standard setting",
-        "Quality-focused approach",
+        "Exceptional delivery",
+        "Reliable operational systems",
+        "Quality-focused builds",
         "Continuous improvement",
       ],
     },
@@ -157,10 +157,10 @@ export default function ValuesPage() {
               Our Mission
             </h2>
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8">
-              To empower businesses through innovative digital solutions that enhance efficiency, drive growth, and ensure sustainability in an evolving technological landscape, ultimately preparing them for future challenges.
+              To empower businesses through custom operational solutions that streamline workflows, automate processes, and build systems that fit how they actually work—driving efficiency, growth, and readiness for the future.
             </p>
             <p className="text-base md:text-lg text-slate-400 leading-relaxed">
-              At ARK DIGITAL, we are committed to pioneering digital solutions that empower businesses to thrive in an ever-changing technological landscape, driving growth through tailored software development and digital transformation.
+              At ARK DIGITAL, we develop custom business operation solutions—workflows, automation, and operational systems—tailored to how your business runs, not generic off-the-shelf software.
             </p>
           </div>
         </div>

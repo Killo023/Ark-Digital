@@ -7,50 +7,50 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Full-stack development, AI integration, security solutions, cloud infrastructure, and digital transformation services.",
+  description: "Custom business operation solutions: workflow automation, operational systems, process tools, and integration services.",
 };
 
 export default function ServicesPage() {
   const mainServices = [
     {
       icon: Code,
-      title: "Custom Software Development",
-      description: "We create tailored software solutions that align with your business goals, enhancing operational efficiency and driving digital innovation through user-friendly interfaces and robust functionalities.",
+      title: "Custom Business Operation Solutions",
+      description: "We design and build operational systems that fit your workflows—process automation, internal tools, and business-specific applications that address how you actually run your operations.",
       features: [
-        "Tailored software solutions",
-        "Business goal alignment",
-        "Operational efficiency enhancement",
-        "User-friendly interfaces",
-        "Robust functionalities",
-        "Digital innovation",
+        "Workflow & process automation",
+        "Operational dashboards & tools",
+        "Business-specific applications",
+        "Integration with existing systems",
+        "Scalable operational infrastructure",
+        "End-to-end process design",
       ],
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&h=1080&fit=crop&q=80",
     },
     {
       icon: Cloud,
-      title: "Cloud Infrastructure & DevOps",
-      description: "Our cloud infrastructure services provide scalable solutions with seamless integration, ensuring high availability and performance. We implement DevOps best practices to streamline processes, enhancing collaboration and reducing time-to-market.",
+      title: "Operational Infrastructure",
+      description: "We build scalable infrastructure for your operational systems—ensuring your workflows, automation, and business tools run reliably, integrate seamlessly, and grow with your business.",
       features: [
-        "Scalable cloud solutions",
-        "Seamless integration",
-        "High availability and performance",
-        "DevOps best practices",
-        "Streamlined processes",
-        "Reduced time-to-market",
+        "Scalable operational infrastructure",
+        "System integration",
+        "High availability & reliability",
+        "Deployment & maintenance",
+        "Streamlined delivery",
+        "Process continuity",
       ],
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80",
     },
     {
       icon: RefreshCw,
-      title: "Digital Transformation Consulting",
-      description: "We guide organizations in navigating their digital transformation journey, leveraging technology to improve customer experiences, operational agility, and overall business performance through strategic insights and actionable plans.",
+      title: "Operations & Process Consulting",
+      description: "We work with you to map, optimize, and modernize your business operations—identifying bottlenecks, designing efficient workflows, and implementing systems that improve how you work.",
       features: [
-        "Digital transformation guidance",
-        "Customer experience improvement",
-        "Operational agility enhancement",
-        "Strategic insights",
-        "Actionable plans",
-        "Business performance optimization",
+        "Operations assessment",
+        "Workflow design & optimization",
+        "Process mapping",
+        "Strategic recommendations",
+        "Implementation planning",
+        "Operational performance improvement",
       ],
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop&q=80",
     },
@@ -69,18 +69,18 @@ export default function ServicesPage() {
     },
     {
       icon: Database,
-      title: "Data Management",
-      description: "Database design, data migration, analytics, and business intelligence solutions.",
+      title: "Data & Reporting",
+      description: "Operational data design, reporting dashboards, and business intelligence for decision-making.",
     },
     {
       icon: Smartphone,
-      title: "Mobile Development",
-      description: "Native iOS and Android apps, cross-platform solutions, and mobile optimization.",
+      title: "Mobile & Field Tools",
+      description: "Mobile apps and field tools for operations, reporting, and on-the-go process management.",
     },
     {
       icon: Globe,
-      title: "Web Development",
-      description: "Modern, responsive websites with SEO optimization and performance tuning.",
+      title: "Web & Portal Development",
+      description: "Internal portals, client-facing interfaces, and operational web tools tailored to your workflows.",
     },
     {
       icon: BarChart3,
@@ -113,10 +113,10 @@ export default function ServicesPage() {
               Our Services
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-8">
-              Innovative solutions for business transformation. We provide customized, cutting-edge technology services that enhance operational effectiveness.
+              Custom business operation solutions. We design workflows, automation, and operational systems tailored to how your business runs.
             </p>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              ARK DIGITAL focuses on mid-sized to large enterprises, seeking innovative solutions to drive efficiency and growth through robust digital transformation strategies tailored to their unique needs.
+              ARK DIGITAL works with mid-sized to large enterprises seeking custom operational solutions—systems, workflows, and automation built around their unique processes.
             </p>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function ServicesPage() {
                 Additional Capabilities
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Beyond our core services, we offer specialized solutions to meet your unique needs.
+                Additional capabilities that support and extend your operational systems.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -286,10 +286,10 @@ export default function ServicesPage() {
             
             <div className="bg-navy-light/40 backdrop-blur-sm rounded-2xl p-12 border border-gold/20">
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to Transform Your Digital Presence?
+                Ready to Streamline Your Operations?
               </h2>
               <p className="text-lg text-slate-300 mb-6 max-w-2xl mx-auto">
-                Let&apos;s discuss how our services can help solve your business challenges and drive growth.
+                Let&apos;s discuss how custom operational solutions can solve your workflow challenges and drive efficiency.
               </p>
               <div className="bg-navy-dark/50 rounded-lg p-6 border border-gold/20 max-w-2xl mx-auto mb-8">
                 <h3 className="text-white font-display text-lg font-bold mb-2">Our Methodology</h3>

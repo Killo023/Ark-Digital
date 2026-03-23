@@ -6,7 +6,7 @@ import { Shield, Compass, Anchor } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Ark Digital - A software firm focused on integrity, security, and navigating the flood of data.",
+  description: "Ark Digital develops custom business operation solutions. Workflows, automation, and operational systems tailored to how your business runs.",
 };
 
 export default function HomePage() {
@@ -49,7 +49,7 @@ export default function HomePage() {
                 Our Core Mission
               </h2>
               <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                To empower businesses through innovative digital solutions that enhance efficiency, drive growth, and ensure sustainability in an evolving technological landscape, ultimately preparing them for future challenges.
+                To empower businesses through custom operational solutions that streamline workflows, automate processes, and build systems that fit how you actually work—driving efficiency, growth, and readiness for what comes next.
               </p>
             </div>
             
@@ -76,7 +76,7 @@ export default function HomePage() {
                 <div className="p-6">
                   <h3 className="text-white font-semibold text-lg mb-2">Target Market</h3>
                   <p className="text-slate-300 text-sm">
-                    We focus on mid-sized to large enterprises, seeking innovative solutions to drive efficiency and growth through robust digital transformation strategies.
+                    We focus on mid-sized to large enterprises seeking custom operational solutions—workflows, automation, and systems that drive efficiency and growth.
                   </p>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export default function HomePage() {
                 <div className="p-6">
                   <h3 className="text-white font-semibold text-lg mb-2">Innovative Solutions</h3>
                   <p className="text-slate-300 text-sm">
-                    We provide customized, cutting-edge technology services that enhance operational effectiveness and address the increasing demand for tailored digital transformation solutions.
+                    We build custom operational systems that fit your business—workflows, automation, and process tools designed for how you work, not generic software.
                   </p>
                 </div>
               </div>
@@ -171,7 +171,7 @@ export default function HomePage() {
                 Why Choose ARK Digital?
               </h2>
               <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
-                A premier software development firm dedicated to building resilient, future-proof digital solutions.
+                Specialists in custom business operation solutions—we build systems, workflows, and automation that fit how your business actually runs.
               </p>
             </div>
             
@@ -201,7 +201,7 @@ export default function HomePage() {
                 <div className="p-8">
                   <h3 className="text-white font-display text-xl font-bold mb-3">Stability & Security</h3>
                   <p className="text-slate-300 leading-relaxed">
-                    We prioritize clean code and architectural integrity, ensuring your digital assets are safe, reliable, and built to last. Every line of code is crafted with security and stability in mind.
+                    We prioritize reliability and security so your operational systems run without disruption. Built for stability, designed for the long run.
                   </p>
                 </div>
               </div>
@@ -231,7 +231,7 @@ export default function HomePage() {
                 <div className="p-8">
                   <h3 className="text-white font-display text-xl font-bold mb-3">Strategic Navigation</h3>
                   <p className="text-slate-300 leading-relaxed">
-                    We don&apos;t just build; we consult. Our team helps you find the most efficient path to your digital goals, avoiding common pitfalls and optimizing for success.
+                    We map your operations first. Our team works with you to design the most efficient workflows and systems, avoiding bottlenecks and aligning with your goals.
                   </p>
                 </div>
               </div>
@@ -261,7 +261,7 @@ export default function HomePage() {
                 <div className="p-8">
                   <h3 className="text-white font-display text-xl font-bold mb-3">Modern Innovation</h3>
                   <p className="text-slate-300 leading-relaxed">
-                    Utilizing the latest in cloud computing, AI integration, and full-stack development. We stay ahead of the curve to deliver cutting-edge solutions.
+                    Modern technology applied to real operational challenges. Cloud, automation, and integration built around your business needs.
                   </p>
                 </div>
               </div>
@@ -304,7 +304,7 @@ export default function HomePage() {
                 Our Services
               </h2>
               <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-4">
-                Comprehensive software solutions designed to solve specific business challenges and drive digital transformation.
+                Custom operational solutions—workflows, automation, and business systems—designed around your processes and built to scale.
               </p>
             </div>
             
@@ -313,7 +313,7 @@ export default function HomePage() {
                 <div className="relative h-56 overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop&q=80"
-                    alt="Custom Software Development"
+                    alt="Custom Business Operations"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -329,22 +329,22 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="p-8">
-                  <h3 className="text-white font-display text-xl font-bold mb-3">Custom Software Development</h3>
+                  <h3 className="text-white font-display text-xl font-bold mb-3">Custom Business Operations</h3>
                   <p className="text-slate-300 leading-relaxed mb-4">
-                    Tailored applications designed to solve specific business bottlenecks. We build exactly what you need, when you need it.
+                    Systems built around your workflows and processes. We solve operational bottlenecks with solutions that fit how you work.
                   </p>
                   <ul className="space-y-2 text-sm text-slate-400">
                     <li className="flex items-start">
                       <span className="text-yellow mr-2">•</span>
-                      <span>Web & Mobile Applications</span>
+                      <span>Workflow & Process Automation</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-yellow mr-2">•</span>
-                      <span>API Development & Integration</span>
+                      <span>Operational Dashboards & Tools</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-yellow mr-2">•</span>
-                      <span>Custom Business Solutions</span>
+                      <span>Business-Specific Systems</span>
                     </li>
                   </ul>
                 </div>

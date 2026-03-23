@@ -44,8 +44,7 @@ export function Footer() {
               />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
-              Navigating the flood of data with integrity, security, and excellence.
-              A software firm committed to stewardship and innovation.
+              Custom business operation solutions—workflows, automation, and systems built around how your business runs.
             </p>
           </div>
 

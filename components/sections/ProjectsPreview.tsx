@@ -53,7 +53,7 @@ export function ProjectsPreview() {
             Featured Projects
           </h2>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-            Explore our recent work. Each project demonstrates our commitment to excellence, security, and innovation.
+            Explore our recent work. Each project showcases our approach to building custom operational solutions—systems that fit real business needs.
           </p>
         </motion.div>
 

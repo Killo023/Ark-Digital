@@ -25,11 +25,11 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ark Digital - Navigating the Flood of Data",
+    default: "Ark Digital - Custom Business Operation Solutions",
     template: "%s | Ark Digital",
   },
-  description: "ARK DIGITAL - Transforming Businesses. Your Partner in Software Development. We pioneer digital solutions that empower businesses to thrive through tailored software development and digital transformation.",
-  keywords: ["software development", "web development", "full-stack development", "AI integration", "security", "Ark Digital"],
+  description: "ARK DIGITAL develops custom business operation solutions. We design and build workflows, automation, and operational systems tailored to how your business runs—not generic software.",
+  keywords: ["custom business operations", "workflow automation", "operational solutions", "business systems", "process automation", "Ark Digital"],
   authors: [{ name: "Ark Digital" }],
   creator: "Ark Digital",
   publisher: "Ark Digital",
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "Ark Digital",
-    title: "Ark Digital - Navigating the Flood of Data",
-    description: "A software firm focused on integrity, security, and navigating the flood of data.",
+    title: "Ark Digital - Custom Business Operation Solutions",
+    description: "We develop custom business operation solutions—workflows, automation, and systems tailored to your processes.",
     images: [
       {
         url: "/og-image.jpg",
@@ -63,8 +63,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ark Digital - Navigating the Flood of Data",
-    description: "A software firm focused on integrity, security, and navigating the flood of data.",
+    title: "Ark Digital - Custom Business Operation Solutions",
+    description: "We develop custom business operation solutions—workflows, automation, and systems tailored to your processes.",
     images: ["/og-image.jpg"],
   },
   robots: {

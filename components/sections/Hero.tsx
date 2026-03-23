@@ -14,7 +14,7 @@ export function Hero() {
       <div className="absolute inset-0 z-[1]">
         <Image
           src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&q=80"
-          alt="Software Development Background"
+          alt="Business Operations Solutions Background"
           fill
           className="object-cover opacity-20"
           priority
@@ -84,13 +84,13 @@ export function Hero() {
             <div className="inline-flex items-center space-x-2 mb-4 px-4 py-2 bg-black-light/50 backdrop-blur-sm rounded-full border border-yellow/30">
               <Anchor className="h-4 w-4 text-yellow" />
               <span className="text-sm text-slate-300 font-medium">
-                Software Excellence
+                Custom Business Operations
               </span>
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Building{" "}
+              Custom{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-yellow">Digital Solutions</span>
+                <span className="relative z-10 text-yellow">Business Operations</span>
                 <motion.span
                   variants={revealCurve}
                   className="absolute bottom-0 left-0 right-0 h-3 bg-yellow/20 -z-0"
@@ -98,7 +98,7 @@ export function Hero() {
                 />
               </span>
               <br />
-              That Scale
+              Solutions That Scale
             </h1>
           </motion.div>
 
@@ -107,7 +107,7 @@ export function Hero() {
             variants={slideUp}
             className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            Transforming Businesses. Your Partner in Software Development. We are committed to pioneering digital solutions that empower businesses to thrive in an ever-changing technological landscape.
+            Transforming how you run your business. We design and build custom operational solutions—workflows, automation, and systems—tailored to your processes, not generic off-the-shelf software.
           </motion.p>
 
           {/* Value Propositions */}
@@ -119,17 +119,17 @@ export function Hero() {
               {
                 icon: Shield,
                 title: "Stability & Security",
-                description: "Clean code and architectural integrity for safe, reliable digital assets",
+                description: "Robust systems built for reliability so your operations run without disruption",
               },
               {
                 icon: Compass,
                 title: "Strategic Navigation",
-                description: "We don&apos;t just build; we consult and find the most efficient path to your goals",
+                description: "We map your workflows first, then design the most efficient path to your goals",
               },
               {
                 icon: Anchor,
-                title: "Modern Innovation",
-                description: "Latest in cloud computing, AI integration, and full-stack development",
+                title: "Operation-Focused",
+                description: "Solutions built around how you work, not how generic software thinks you should",
               },
             ].map((item, index) => (
               <motion.div

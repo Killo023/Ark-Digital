@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -311,21 +311,6 @@ export function ContactForm() {
 
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Phone className="h-5 w-5 text-gold" />
-                      </div>
-                      <div>
-                        <h4 className="text-white font-semibold mb-1">Phone</h4>
-                        <a
-                          href="tel:+27794772031"
-                          className="text-slate-300 hover:text-gold transition-colors"
-                        >
-                          +27 79 477 2031
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
                         <MapPin className="h-5 w-5 text-gold" />
                       </div>
                       <div>
@@ -345,7 +330,7 @@ export function ContactForm() {
                     Response Time
                   </h3>
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    We typically respond to all inquiries within 24 hours during business days. For urgent matters, please call us directly.
+                    We typically respond to all inquiries within 24 hours during business days. For urgent matters, note that in your message and we&apos;ll prioritize.
                   </p>
                 </CardContent>
               </Card>

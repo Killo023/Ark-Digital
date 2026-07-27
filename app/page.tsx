@@ -5,6 +5,7 @@ import { Hero } from "@/components/sections/Hero";
 import { ProjectsPreview } from "@/components/sections/ProjectsPreview";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
+import { PricingDisplay } from "@/components/ui/pricing-display";
 import { ArrowRight, Clock, Zap, BarChart3, MessageCircle, Database, Layers, Target, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -215,8 +216,7 @@ export default function HomePage() {
                 Choose Your <span className="text-yellow">Growth Track</span>
               </h2>
               <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
-                Monthly retainers designed for South African (ZAR) and international (USD) clients. 
-                Pick the tier that matches your revenue ambition.
+                Your price is shown in your local currency. Pick the tier that matches your revenue ambition.
               </p>
             </div>
 
@@ -230,11 +230,7 @@ export default function HomePage() {
                   <p className="text-sm text-slate-400">Mid-tier — for businesses ready to automate their GTM engine</p>
                 </div>
                 <div className="p-8 space-y-6">
-                  <div className="space-y-1">
-                    <p className="text-sm text-slate-400">Starting from</p>
-                    <p className="text-3xl font-bold text-white">R18,500<span className="text-base text-slate-400 font-normal">/mo</span></p>
-                    <p className="text-sm text-slate-500">or $1,000/mo for international</p>
-                  </div>
+                  <PricingDisplay zar="18,500" usd="1,000" />
                   <ul className="space-y-3 text-sm text-slate-300">
                     <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Speed-to-lead WhatsApp bot setup & management</span></li>
                     <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Single outbound channel (email or LinkedIn)</span></li>
@@ -263,11 +259,7 @@ export default function HomePage() {
                   <p className="text-sm text-slate-400">Premium — end-to-end revenue operations for high-growth teams</p>
                 </div>
                 <div className="p-8 space-y-6">
-                  <div className="space-y-1">
-                    <p className="text-sm text-slate-400">Starting from</p>
-                    <p className="text-3xl font-bold text-white">R38,000<span className="text-base text-slate-400 font-normal">/mo</span></p>
-                    <p className="text-sm text-slate-500">or $2,200/mo for international</p>
-                  </div>
+                  <PricingDisplay zar="38,000" usd="2,200" />
                   <ul className="space-y-3 text-sm text-slate-300">
                     <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Everything in Core Growth, plus:</span></li>
                     <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Multi-channel outbound (email + LinkedIn + SMS)</span></li>

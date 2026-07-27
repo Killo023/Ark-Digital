@@ -131,6 +131,18 @@ All sections use scroll-triggered fade/slide animations via Framer Motion:
 | `.ProjectGrid` | `components/projects/ProjectGrid.tsx` | Uses `staggerContainer` from `lib/animations.ts` |
 | `.ProjectCard` | `components/projects/ProjectCard.tsx` | Uses `fadeIn` with per-card delay |
 | `lib/animations.ts` | Variants: `fadeIn`, `slideUp`, `slideDown`, `staggerContainer`, `staggerItem` | Shared across components |
+| `lib/use-currency.ts` | Hook + types for geo-detecting ZAR vs USD | Used by `PricingDisplay` |
+
+## Pricing System
+
+Single price shown based on visitor location (detected via browser timezone + locale):
+- **South African visitors** (timezone `Africa/Johannesburg` or locale `en-ZA`) → ZAR prices
+- **International visitors** → USD prices
+
+| Component | File | Usage |
+|---|---|---|
+| `<PricingDisplay>` | `components/ui/pricing-display.tsx` | Renders price with correct currency symbol. Props: `zar`, `usd` |
+| `useCurrency()` | `lib/use-currency.ts` | Returns `'ZAR'` or `'USD'` based on client-side detection |
 
 ---
 

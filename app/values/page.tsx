@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Zap, Target, Shield, Users, TrendingUp, Clock } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -67,7 +68,7 @@ export default function ValuesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               About <span className="text-yellow">Arc Digital</span>
@@ -78,7 +79,7 @@ export default function ValuesPage() {
               and measure everything against revenue impact.
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Values Grid */}
@@ -102,8 +103,10 @@ export default function ValuesPage() {
                 "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop&q=80",
               ];
               return (
-                <div
+                <Reveal
                   key={value.title}
+                  delay={index * 0.1}
+                  direction={index % 2 === 0 ? "left" : "right"}
                   className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/20 hover:border-yellow/50 transition-all hover:bg-black-light/50 group"
                 >
                   <div className="relative h-48 overflow-hidden">
@@ -134,7 +137,7 @@ export default function ValuesPage() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -152,7 +155,7 @@ export default function ValuesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black-light/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
               How We Work
@@ -162,24 +165,24 @@ export default function ValuesPage() {
               Here&apos;s what it looks like to work with us:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6 text-left">
+              <Reveal delay={0.1} className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6 text-left">
                 <div className="text-yellow font-display text-3xl font-bold mb-2">01</div>
                 <h3 className="text-white font-display font-bold mb-2">Audit</h3>
                 <p className="text-sm text-slate-400">We review your pipeline, tools, and processes. Free, no commitment.</p>
-              </div>
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6 text-left">
+              </Reveal>
+              <Reveal delay={0.2} className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6 text-left">
                 <div className="text-yellow font-display text-3xl font-bold mb-2">02</div>
                 <h3 className="text-white font-display font-bold mb-2">Build</h3>
                 <p className="text-sm text-slate-400">We configure and deploy your automation stack. Typically within a week.</p>
-              </div>
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6 text-left">
+              </Reveal>
+              <Reveal delay={0.3} className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6 text-left">
                 <div className="text-yellow font-display text-3xl font-bold mb-2">03</div>
                 <h3 className="text-white font-display font-bold mb-2">Optimize</h3>
                 <p className="text-sm text-slate-400">Monthly retainer with continuous monitoring, tweaks, and scaling.</p>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* CTA */}
@@ -193,7 +196,7 @@ export default function ValuesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Build Your GTM Engine?
@@ -212,7 +215,7 @@ export default function ValuesPage() {
               </Link>
             </Button>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

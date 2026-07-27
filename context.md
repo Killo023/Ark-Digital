@@ -57,7 +57,8 @@ Next.js 15 (App Router) website for **Ark Digital** — currently pivoting from 
 │   └── ui/                 # shadcn-style primitives
 │       ├── button.tsx, card.tsx, dialog.tsx, input.tsx, textarea.tsx
 │       ├── WhatsAppButton.tsx  # Floating green WhatsApp CTA (fixed bottom-right)
-│       └── placeholder-image.tsx
+│       ├── placeholder-image.tsx
+│       └── reveal.tsx      # Scroll-triggered fade/slide animation wrapper
 ├── lib/
 │   ├── utils.ts            # cn() — clsx + tailwind-merge
 │   ├── animations.ts       # Framer Motion variants (fadeIn, slideUp, staggerContainer, etc.)
@@ -98,40 +99,38 @@ Next.js 15 (App Router) website for **Ark Digital** — currently pivoting from 
 ## Current Page Inventory
 
 | Route | Purpose | Status |
-|---|---|---|
-| `/` | Home — Hero, Mission, Why Choose, Services Preview | Needs full rewrite |
-| `/services` | Services — Custom Dev, Cloud, Digital Transformation | Needs full rewrite |
-| `/projects` | Portfolio grid (5 case studies) | Keep as case studies, reframe for GTM |
-| `/projects/[slug]` | Individual project detail | Keep, reframe descriptions |
-| `/values` | Mission/Values page | Rewrite for GTM positioning |
-| `/contact` | Contact form | Rewrite for GTM Audit CTA |
-| `/test` | Dev test page | Remove or repurpose |
+|---|---|---|---|
+| `/` | Home — Hero, Problem/Fix, Core Services, Pricing, Stats, Projects, CTA | Complete (GTM messaging) |
+| `/services` | Services — 3 verticals, How It Works, CTA | Complete |
+| `/projects` | Portfolio grid (5 case studies) | Reframed for GTM |
+| `/projects/[slug]` | Individual project detail | Reframed descriptions |
+| `/values` | Mission/Values page | Rewritten for GTM positioning |
+| `/contact` | Contact form + GTM Audit booking | Complete |
+| `/test` | Dev test page | Present |
 
 ---
 
-## GTM Pivot — Required Changes
+## Known Issues / TODOs
 
-### New Messaging
-- **Hero:** "Predictable Revenue. Instant Lead Response. Automated Growth."
-- **Primary CTA:** "Book a GTM & Revenue Audit"
-- **Sub-message:** Helping local and global businesses replace manual admin with scalable growth engines
+- **Case studies still show web dev projects** (physio, cleaning, law) — need real GTM automation cases
+- **No testimonials or client logo strip** — add social proof section
+- **No blog/content marketing** — add `/blog` for SEO
+- **No email capture** — add newsletter opt-in or lead magnet download
+- **No anchor nav** — consider sticky section nav for long pages
 
-### New Service Verticals
-1. **Speed-to-Lead & WhatsApp Automation** — Instant qualification/routing for inbound
-2. **Outbound & Lead Gen Systems** — Multi-channel pipelines, data enrichment
-3. **CRM & Data Reconciliation** — Automating data flow between tools
+---
 
-### Retainer Framework
-- **Phase 2: Core Growth** (mid-tier, monthly retainer)
-- **Phase 3: Full-Stack Scale** (premium, full-service)
+## Animation System
 
-### Front-End Offer
-- **"The GTM & Revenue Leak Audit"** — free audit as lead magnet → calendar embed
+All sections use scroll-triggered fade/slide animations via Framer Motion:
 
-### Remove
-- All "custom software development" language
-- "Building apps from scratch" references
-- Traditional software portfolio framing
+| Component | File | Usage |
+|---|---|---|
+| `<Reveal>` | `components/ui/reveal.tsx` | Wraps any section/content. Props: `direction` (up/down/left/right/none), `delay`, `duration`, `once` |
+| `.Hero` | `components/sections/Hero.tsx` | Built-in stagger + glow blob animations |
+| `.ProjectGrid` | `components/projects/ProjectGrid.tsx` | Uses `staggerContainer` from `lib/animations.ts` |
+| `.ProjectCard` | `components/projects/ProjectCard.tsx` | Uses `fadeIn` with per-card delay |
+| `lib/animations.ts` | Variants: `fadeIn`, `slideUp`, `slideDown`, `staggerContainer`, `staggerItem` | Shared across components |
 
 ---
 

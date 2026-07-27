@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { projects } from "@/lib/projects";
 import { ProjectGrid } from "@/components/projects/ProjectGrid";
+import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
   title: "Case Studies",
@@ -22,7 +23,7 @@ export default function ProjectsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
           <div className="text-center mb-12 md:mb-16">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
@@ -32,7 +33,7 @@ export default function ProjectsPage() {
               Real businesses. Real automation. Real results. Each project showcases how we&apos;ve helped companies eliminate manual overhead and accelerate revenue.
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Projects Grid Section */}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
 import { ProjectsPreview } from "@/components/sections/ProjectsPreview";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 import { ArrowRight, Clock, Zap, BarChart3, MessageCircle, Database, Layers, Target, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -41,7 +42,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <div className="bg-red-950/20 backdrop-blur-sm rounded-lg border border-red-500/20 p-8">
+              <Reveal delay={0.1} direction="left" className="bg-red-950/20 backdrop-blur-sm rounded-lg border border-red-500/20 p-8">
                 <h3 className="font-display text-lg font-bold text-red-400 mb-4 flex items-center gap-2">
                   <Clock className="h-5 w-5" />
                   The Old Way
@@ -53,8 +54,8 @@ export default function HomePage() {
                   <li className="flex items-start gap-2">• Disconnected tools creating data silos</li>
                   <li className="flex items-start gap-2">• Sales and marketing operating in silos</li>
                 </ul>
-              </div>
-              <div className="bg-green-950/20 backdrop-blur-sm rounded-lg border border-yellow/30 p-8">
+              </Reveal>
+              <Reveal delay={0.2} direction="right" className="bg-green-950/20 backdrop-blur-sm rounded-lg border border-yellow/30 p-8">
                 <h3 className="font-display text-lg font-bold text-yellow mb-4 flex items-center gap-2">
                   <Zap className="h-5 w-5" />
                   The Arc Digital Fix
@@ -66,10 +67,10 @@ export default function HomePage() {
                   <li className="flex items-start gap-2">• Unified data pipeline across all your tools</li>
                   <li className="flex items-start gap-2">• Full-funnel visibility with actionable analytics</li>
                 </ul>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Core Services */}
@@ -83,7 +84,7 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black-light/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -95,7 +96,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10">
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
+              <Reveal delay={0.1} className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&h=600&fit=crop&q=80"
@@ -120,9 +121,9 @@ export default function HomePage() {
                     <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Instant proposal & quote delivery</span></li>
                   </ul>
                 </div>
-              </div>
+              </Reveal>
 
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
+              <Reveal delay={0.2} className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80"
@@ -147,9 +148,9 @@ export default function HomePage() {
                     <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>A/B testing & performance analytics</span></li>
                   </ul>
                 </div>
-              </div>
+              </Reveal>
 
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
+              <Reveal delay={0.3} className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&q=80"
@@ -174,24 +175,26 @@ export default function HomePage() {
                     <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Custom reporting dashboards</span></li>
                   </ul>
                 </div>
-              </div>
+              </Reveal>
             </div>
 
-            <div className="text-center">
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-2 border-yellow text-yellow hover:bg-yellow/10 px-8 py-6 text-base group"
-              >
-                <Link href="/services">
-                  Explore All Services
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-            </div>
+            <Reveal delay={0.4}>
+              <div className="text-center">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-yellow text-yellow hover:bg-yellow/10 px-8 py-6 text-base group"
+                >
+                  <Link href="/services">
+                    Explore All Services
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
+            </Reveal>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Retainer Framework */}
@@ -205,7 +208,7 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -218,7 +221,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl border border-yellow/30 hover:border-yellow/70 transition-all overflow-hidden">
+              <Reveal delay={0.1} direction="left" className="bg-black-light/40 backdrop-blur-sm rounded-xl border border-yellow/30 hover:border-yellow/70 transition-all overflow-hidden">
                 <div className="bg-yellow/10 px-8 py-6 border-b border-yellow/20">
                   <div className="flex items-center gap-2 mb-2">
                     <Layers className="h-5 w-5 text-yellow" />
@@ -246,9 +249,9 @@ export default function HomePage() {
                     <Link href="/contact">Start Core Growth</Link>
                   </Button>
                 </div>
-              </div>
+              </Reveal>
 
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl border border-yellow/50 hover:border-yellow-100 transition-all overflow-hidden relative">
+              <Reveal delay={0.2} direction="right" className="bg-black-light/40 backdrop-blur-sm rounded-xl border border-yellow/50 hover:border-yellow-100 transition-all overflow-hidden relative">
                 <div className="absolute top-4 right-4 bg-yellow text-black text-xs font-bold px-3 py-1 rounded-full">
                   POPULAR
                 </div>
@@ -279,16 +282,18 @@ export default function HomePage() {
                     <Link href="/contact">Go Full-Stack Scale</Link>
                   </Button>
                 </div>
-              </div>
+              </Reveal>
             </div>
 
-            <div className="text-center mt-10">
-              <p className="text-slate-400 text-sm">
-                All retainers include a free GTM & Revenue Leak Audit to identify exactly where your pipeline is bleeding.
-              </p>
-            </div>
+            <Reveal delay={0.3}>
+              <div className="text-center mt-10">
+                <p className="text-slate-400 text-sm">
+                  All retainers include a free GTM & Revenue Leak Audit to identify exactly where your pipeline is bleeding.
+                </p>
+              </div>
+            </Reveal>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* About Arc Digital / Social Proof */}
@@ -302,7 +307,7 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
               Lean Team. <span className="text-yellow">Massive Impact.</span>
@@ -313,36 +318,38 @@ export default function HomePage() {
               delivery timelines. We deploy high-impact automations in days, not months.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
+              <Reveal delay={0.1} className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
                 <p className="text-3xl font-bold text-yellow mb-1">5+</p>
                 <p className="text-sm text-slate-400">Years in B2B Tech</p>
-              </div>
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
+              </Reveal>
+              <Reveal delay={0.15} className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
                 <p className="text-3xl font-bold text-yellow mb-1">50+</p>
                 <p className="text-sm text-slate-400">Automations Deployed</p>
-              </div>
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
+              </Reveal>
+              <Reveal delay={0.2} className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
                 <p className="text-3xl font-bold text-yellow mb-1">3 Days</p>
                 <p className="text-sm text-slate-400">Average Onboarding</p>
-              </div>
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
+              </Reveal>
+              <Reveal delay={0.25} className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
                 <p className="text-3xl font-bold text-yellow mb-1">ZAR + USD</p>
                 <p className="text-sm text-slate-400">Local & Global Clients</p>
-              </div>
+              </Reveal>
             </div>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-2 border-yellow text-yellow hover:bg-yellow/10 px-8 py-6 text-base group"
-            >
-              <Link href="/projects">
-                View Case Studies
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
+            <Reveal delay={0.3}>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-2 border-yellow text-yellow hover:bg-yellow/10 px-8 py-6 text-base group"
+              >
+                <Link href="/projects">
+                  View Case Studies
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+            </Reveal>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Projects Preview */}
@@ -359,7 +366,7 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to Stop <span className="text-yellow">Losing Revenue</span> to Leaky Pipelines?
@@ -382,7 +389,7 @@ export default function HomePage() {
               No commitment. No sales pitch. Just a clear roadmap to automated revenue.
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

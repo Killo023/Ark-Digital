@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Mail, MapPin, Phone, Send, CheckCircle2, Calendar, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
+import { fadeIn, slideUp } from "@/lib/animations";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -64,7 +66,13 @@ export function ContactForm() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          variants={slideUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        >
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Book Your Free <span className="text-yellow">GTM & Revenue Audit</span>
@@ -74,21 +82,21 @@ export function ContactForm() {
               roadmap for an automated GTM system — no commitment required.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <div className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
+              <motion.div variants={fadeIn} className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
                 <Calendar className="h-4 w-4 text-yellow" />
                 <span>30-min discovery call</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
+              </motion.div>
+              <motion.div variants={fadeIn} className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
                 <CheckCircle2 className="h-4 w-4 text-yellow" />
                 <span>Custom audit report</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
+              </motion.div>
+              <motion.div variants={fadeIn} className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
                 <ArrowRight className="h-4 w-4 text-yellow" />
                 <span>ROI roadmap delivered</span>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Form Section */}
@@ -102,7 +110,13 @@ export function ContactForm() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black-light/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
@@ -341,7 +355,7 @@ export function ContactForm() {
               </Card>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

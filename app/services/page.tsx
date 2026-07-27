@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Target, Database, Zap, BarChart3, Settings, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -71,7 +72,7 @@ export default function ServicesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center space-x-2 mb-4 px-4 py-2 bg-yellow/10 backdrop-blur-sm rounded-full border border-yellow/30">
               <Zap className="h-4 w-4 text-yellow" />
@@ -85,7 +86,7 @@ export default function ServicesPage() {
               shorten response times, and turn your GTM into a revenue engine.
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Core Services */}
@@ -108,7 +109,11 @@ export default function ServicesPage() {
                   index % 2 === 1 ? "lg:grid-flow-dense" : ""
                 }`}
               >
-                <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
+                <Reveal
+                  delay={0.1}
+                  direction={index % 2 === 1 ? "right" : "left"}
+                  className={index % 2 === 1 ? "lg:col-start-2" : ""}
+                >
                   <div className="relative aspect-video rounded-xl overflow-hidden">
                     <Image
                       src={service.image}
@@ -118,8 +123,12 @@ export default function ServicesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
                   </div>
-                </div>
-                <div className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
+                </Reveal>
+                <Reveal
+                  delay={0.2}
+                  direction={index % 2 === 1 ? "left" : "right"}
+                  className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}
+                >
                   <div className="w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center mb-6">
                     <service.icon className="h-8 w-8 text-yellow" />
                   </div>
@@ -140,7 +149,7 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </Reveal>
               </div>
             ))}
           </div>
@@ -158,7 +167,7 @@ export default function ServicesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black-light/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -169,7 +178,7 @@ export default function ServicesPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
+              <Reveal delay={0.1} className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
                 <div className="w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Settings className="h-8 w-8 text-yellow" />
                 </div>
@@ -178,8 +187,8 @@ export default function ServicesPage() {
                   We audit your current pipeline, identify leaks, and deliver a roadmap with 
                   expected ROI — no commitment required.
                 </p>
-              </div>
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
+              </Reveal>
+              <Reveal delay={0.2} className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
                 <div className="w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BarChart3 className="h-8 w-8 text-yellow" />
                 </div>
@@ -188,8 +197,8 @@ export default function ServicesPage() {
                   Within days, not months. We configure your automation stack, integrate your tools, 
                   and go live with full testing.
                 </p>
-              </div>
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
+              </Reveal>
+              <Reveal delay={0.3} className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
                 <div className="w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Zap className="h-8 w-8 text-yellow" />
                 </div>
@@ -198,10 +207,10 @@ export default function ServicesPage() {
                   Monthly management, optimization, and support. Your GTM runs 24/7 — 
                   you focus on closing deals.
                 </p>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* CTA Section */}
@@ -215,7 +224,7 @@ export default function ServicesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <Reveal className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="bg-black-light/40 backdrop-blur-sm rounded-2xl p-12 border border-yellow/20">
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
@@ -237,7 +246,7 @@ export default function ServicesPage() {
               </Button>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

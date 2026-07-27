@@ -276,10 +276,10 @@ export function ContactForm() {
                       <div>
                         <h4 className="text-white font-semibold mb-1">Email</h4>
                         <a
-                          href="mailto:info@underratedsecurity.com"
+                          href="mailto:info@arkdigital.solutions"
                           className="text-slate-300 hover:text-yellow transition-colors text-sm"
                         >
-                          info@underratedsecurity.com
+                          info@arkdigital.solutions
                         </a>
                       </div>
                     </div>

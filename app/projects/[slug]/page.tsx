@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-navy-dark via-navy to-navy-light">
+    <div className="min-h-screen bg-gradient-to-b from-black via-black-light to-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
         {/* Back Button */}
         <BackToProjects />

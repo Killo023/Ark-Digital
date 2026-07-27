@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Phone, Send, CheckCircle2, Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,13 +24,11 @@ export function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission (replace with actual server action)
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     setIsSubmitting(false);
     setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
+
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -59,7 +57,7 @@ export function ContactForm() {
       <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop&q=80"
             alt="Contact Background"
             fill
             className="object-cover opacity-20"
@@ -69,55 +67,31 @@ export function ContactForm() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Get in Touch
+              Book Your Free <span className="text-yellow">GTM & Revenue Audit</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-              Ready to transform your digital presence? Let&apos;s discuss how we can help solve your business challenges.
+              We&apos;ll audit your current pipeline, identify every revenue leak, and deliver a clear 
+              roadmap for an automated GTM system — no commitment required.
             </p>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-8">
-              Fill out the form below or reach out directly. We typically respond within 24 hours.
-            </p>
-            
-            {/* Image Gallery */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12">
-              <div className="relative aspect-square rounded-lg overflow-hidden group">
-                <Image
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop&q=80"
-                  alt="Contact 1"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
+              <div className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
+                <Calendar className="h-4 w-4 text-yellow" />
+                <span>30-min discovery call</span>
               </div>
-              <div className="relative aspect-square rounded-lg overflow-hidden group">
-                <Image
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=400&fit=crop&q=80"
-                  alt="Contact 2"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+              <div className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
+                <CheckCircle2 className="h-4 w-4 text-yellow" />
+                <span>Custom audit report</span>
               </div>
-              <div className="relative aspect-square rounded-lg overflow-hidden group">
-                <Image
-                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=400&fit=crop&q=80"
-                  alt="Contact 3"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="relative aspect-square rounded-lg overflow-hidden group">
-                <Image
-                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=400&fit=crop&q=80"
-                  alt="Contact 4"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+              <div className="flex items-center gap-2 text-sm text-slate-400 bg-black-light/30 px-4 py-2 rounded-full border border-yellow/20">
+                <ArrowRight className="h-4 w-4 text-yellow" />
+                <span>ROI roadmap delivered</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Form Section */}
       <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -126,22 +100,22 @@ export function ContactForm() {
             fill
             className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-light/95 via-navy/90 to-navy-dark/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black-light/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="bg-navy-light/40 backdrop-blur-sm border-gold/20">
+              <Card className="bg-black-light/40 backdrop-blur-sm border-yellow/20">
                 <CardContent className="p-8">
                   {isSubmitted ? (
                     <div className="text-center py-12">
-                      <CheckCircle2 className="h-16 w-16 text-gold mx-auto mb-4" />
+                      <CheckCircle2 className="h-16 w-16 text-yellow mx-auto mb-4" />
                       <h3 className="text-2xl font-bold text-white mb-2">
-                        Thank You!
+                        Audit Request Received!
                       </h3>
                       <p className="text-slate-300">
-                        We&apos;ve received your message and will get back to you soon.
+                        We&apos;ll review your details and reach out within 24 hours to schedule your free GTM audit.
                       </p>
                     </div>
                   ) : (
@@ -161,7 +135,7 @@ export function ContactForm() {
                             required
                             value={formData.name}
                             onChange={handleChange}
-                            className="bg-navy-dark/50 border-navy-light/50 text-white placeholder:text-slate-500 focus:border-gold"
+                            className="bg-black/50 border-white/10 text-white placeholder:text-slate-600 focus:border-yellow"
                             placeholder="Your full name"
                           />
                         </div>
@@ -179,8 +153,8 @@ export function ContactForm() {
                             required
                             value={formData.email}
                             onChange={handleChange}
-                            className="bg-navy-dark/50 border-navy-light/50 text-white placeholder:text-slate-500 focus:border-gold"
-                            placeholder="your.email@example.com"
+                            className="bg-black/50 border-white/10 text-white placeholder:text-slate-600 focus:border-yellow"
+                            placeholder="your@email.com"
                           />
                         </div>
                       </div>
@@ -191,15 +165,16 @@ export function ContactForm() {
                             htmlFor="company"
                             className="block text-sm font-medium text-white mb-2"
                           >
-                            Company
+                            Company *
                           </label>
                           <Input
                             id="company"
                             name="company"
                             type="text"
+                            required
                             value={formData.company}
                             onChange={handleChange}
-                            className="bg-navy-dark/50 border-navy-light/50 text-white placeholder:text-slate-500 focus:border-gold"
+                            className="bg-black/50 border-white/10 text-white placeholder:text-slate-600 focus:border-yellow"
                             placeholder="Your company name"
                           />
                         </div>
@@ -208,16 +183,17 @@ export function ContactForm() {
                             htmlFor="phone"
                             className="block text-sm font-medium text-white mb-2"
                           >
-                            Phone
+                            Phone *
                           </label>
                           <Input
                             id="phone"
                             name="phone"
                             type="tel"
+                            required
                             value={formData.phone}
                             onChange={handleChange}
-                            className="bg-navy-dark/50 border-navy-light/50 text-white placeholder:text-slate-500 focus:border-gold"
-                            placeholder="+1 (555) 000-0000"
+                            className="bg-black/50 border-white/10 text-white placeholder:text-slate-600 focus:border-yellow"
+                            placeholder="+27 79 477 2031"
                           />
                         </div>
                       </div>
@@ -227,23 +203,22 @@ export function ContactForm() {
                           htmlFor="service"
                           className="block text-sm font-medium text-white mb-2"
                         >
-                          Service Interest
+                          What are you most interested in? *
                         </label>
                         <select
                           id="service"
                           name="service"
+                          required
                           value={formData.service}
                           onChange={handleChange}
-                          className="flex h-10 w-full rounded-md border border-navy-light/50 bg-navy-dark/50 px-3 py-2 text-sm text-white ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+                          className="flex h-10 w-full rounded-md border border-white/10 bg-black/50 px-3 py-2 text-sm text-white ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-2"
                         >
-                          <option value="">Select a service</option>
-                          <option value="custom-software">Custom Software Development</option>
-                          <option value="cloud-infrastructure">Cloud Infrastructure</option>
-                          <option value="digital-transformation">Digital Transformation</option>
-                          <option value="ai-integration">AI Integration</option>
-                          <option value="security">Security Solutions</option>
-                          <option value="consulting">Consulting</option>
-                          <option value="other">Other</option>
+                          <option value="">Select an area</option>
+                          <option value="speed-to-lead">Speed-to-Lead & WhatsApp Automation</option>
+                          <option value="outbound">Outbound & Lead Gen Systems</option>
+                          <option value="crm">CRM & Data Reconciliation</option>
+                          <option value="full-audit">Full GTM & Revenue Audit</option>
+                          <option value="other">Other / Not Sure Yet</option>
                         </select>
                       </div>
 
@@ -252,7 +227,7 @@ export function ContactForm() {
                           htmlFor="message"
                           className="block text-sm font-medium text-white mb-2"
                         >
-                          Message *
+                          Tell us about your current pipeline & challenges *
                         </label>
                         <Textarea
                           id="message"
@@ -260,22 +235,22 @@ export function ContactForm() {
                           required
                           value={formData.message}
                           onChange={handleChange}
-                          rows={6}
-                          className="bg-navy-dark/50 border-navy-light/50 text-white placeholder:text-slate-500 focus:border-gold"
-                          placeholder="Tell us about your project or inquiry..."
+                          rows={5}
+                          className="bg-black/50 border-white/10 text-white placeholder:text-slate-600 focus:border-yellow"
+                          placeholder="What tools are you using? What's your biggest revenue bottleneck? ..."
                         />
                       </div>
 
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-gold hover:bg-gold-light text-navy-dark font-semibold py-6 text-base"
+                        className="w-full bg-yellow hover:bg-yellow-light text-black font-semibold py-6 text-base"
                       >
                         {isSubmitting ? (
-                          "Sending..."
+                          "Submitting..."
                         ) : (
                           <>
-                            Send Message
+                            Book My Free Audit
                             <Send className="ml-2 h-4 w-4" />
                           </>
                         )}
@@ -288,21 +263,21 @@ export function ContactForm() {
 
             {/* Contact Info */}
             <div className="space-y-6">
-              <Card className="bg-navy-light/40 backdrop-blur-sm border-gold/20">
+              <Card className="bg-black-light/40 backdrop-blur-sm border-yellow/20">
                 <CardContent className="p-6">
                   <h3 className="text-white font-display text-xl font-bold mb-6">
                     Contact Information
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Mail className="h-5 w-5 text-gold" />
+                      <div className="w-12 h-12 bg-yellow/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Mail className="h-5 w-5 text-yellow" />
                       </div>
                       <div>
                         <h4 className="text-white font-semibold mb-1">Email</h4>
                         <a
                           href="mailto:info@underratedsecurity.com"
-                          className="text-slate-300 hover:text-gold transition-colors"
+                          className="text-slate-300 hover:text-yellow transition-colors text-sm"
                         >
                           info@underratedsecurity.com
                         </a>
@@ -310,13 +285,28 @@ export function ContactForm() {
                     </div>
 
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <MapPin className="h-5 w-5 text-gold" />
+                      <div className="w-12 h-12 bg-yellow/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Phone className="h-5 w-5 text-yellow" />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold mb-1">Phone / WhatsApp</h4>
+                        <a
+                          href="tel:+27794772031"
+                          className="text-slate-300 hover:text-yellow transition-colors text-sm"
+                        >
+                          +27 79 477 2031
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-yellow/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <MapPin className="h-5 w-5 text-yellow" />
                       </div>
                       <div>
                         <h4 className="text-white font-semibold mb-1">Location</h4>
-                        <p className="text-slate-300">
-                          Serving clients worldwide
+                        <p className="text-slate-300 text-sm">
+                          Serving clients in South Africa and globally
                         </p>
                       </div>
                     </div>
@@ -324,14 +314,29 @@ export function ContactForm() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-navy-light/40 backdrop-blur-sm border-gold/20">
+              <Card className="bg-black-light/40 backdrop-blur-sm border-yellow/20">
                 <CardContent className="p-6">
                   <h3 className="text-white font-display text-xl font-bold mb-4">
-                    Response Time
+                    What Happens Next?
                   </h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    We typically respond to all inquiries within 24 hours during business days. For urgent matters, note that in your message and we&apos;ll prioritize.
-                  </p>
+                  <ol className="space-y-3 text-sm text-slate-300">
+                    <li className="flex items-start gap-2">
+                      <span className="text-yellow font-bold">1.</span>
+                      <span>We review your submission within 24 hours</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-yellow font-bold">2.</span>
+                      <span>We schedule a 30-min discovery call</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-yellow font-bold">3.</span>
+                      <span>We conduct a full pipeline audit (free)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-yellow font-bold">4.</span>
+                      <span>We deliver your custom ROI roadmap</span>
+                    </li>
+                  </ol>
                 </CardContent>
               </Card>
             </div>

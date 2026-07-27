@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/animations";
 
@@ -12,9 +12,9 @@ export function Footer() {
   const footerLinks = {
     company: [
       { href: "/", label: "Home" },
-      { href: "/values", label: "Values" },
       { href: "/services", label: "Services" },
-      { href: "/projects", label: "Projects" },
+      { href: "/projects", label: "Case Studies" },
+      { href: "/contact", label: "Book an Audit" },
     ],
     legal: [
       { href: "/privacy", label: "Privacy Policy" },
@@ -37,14 +37,15 @@ export function Footer() {
             <div className="flex flex-col items-start space-y-3">
               <Image
                 src="/images/Logo%20side%20by%20side.png"
-                alt="Ark Digital"
+                alt="Arc Digital"
                 width={400}
                 height={180}
                 className="h-[180px] w-auto"
               />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
-              Custom business operation solutions—workflows, automation, and systems built around how your business runs.
+              Automated GTM systems, outbound pipelines, and speed-to-lead workflows 
+              for B2B SMEs ready to scale.
             </p>
           </div>
 
@@ -96,15 +97,15 @@ export function Footer() {
                 <Mail className="h-4 w-4 text-yellow mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:info@underratedsecurity.com"
-                  className="text-sm text-slate-400 hover:text-gold transition-colors duration-200"
+                  className="text-sm text-slate-400 hover:text-yellow transition-colors duration-200"
                 >
                   info@underratedsecurity.com
                 </a>
               </li>
               <li className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-yellow mt-0.5 flex-shrink-0" />
+                <Zap className="h-4 w-4 text-yellow mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-slate-400">
-                  Serving clients worldwide
+                  Serving clients in South Africa & globally
                 </span>
               </li>
             </ul>
@@ -115,10 +116,10 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-yellow/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-slate-500">
-              © {currentYear} Ark Digital. All rights reserved.
+              &copy; {currentYear} Arc Digital. All rights reserved.
             </p>
             <p className="text-sm text-slate-500">
-              Built with integrity and excellence
+              Automated GTM Systems — Predictable Revenue. Instant Lead Response. Automated Growth.
             </p>
           </div>
         </div>

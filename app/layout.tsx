@@ -25,15 +25,15 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ark Digital - Custom Business Operation Solutions",
-    template: "%s | Ark Digital",
+    default: "Arc Digital — Automated GTM Systems & Revenue Operations",
+    template: "%s | Arc Digital",
   },
-  description: "ARK DIGITAL develops custom business operation solutions. We design and build workflows, automation, and operational systems tailored to how your business runs—not generic software.",
-  keywords: ["custom business operations", "workflow automation", "operational solutions", "business systems", "process automation", "Ark Digital"],
-  authors: [{ name: "Ark Digital" }],
-  creator: "Ark Digital",
-  publisher: "Ark Digital",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://arkdigital.com"),
+  description: "Arc Digital engineers automated GTM systems, outbound pipelines, and speed-to-lead workflows that eliminate manual overhead and accelerate revenue for B2B SMEs.",
+  keywords: ["GTM automation", "revenue operations", "lead generation", "WhatsApp automation", "CRM reconciliation", "outbound pipelines", "Arc Digital"],
+  authors: [{ name: "Arc Digital" }],
+  creator: "Arc Digital",
+  publisher: "Arc Digital",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://arcdigital.solutions"),
   icons: {
     icon: [
       { url: "/images/Logo%20Icon.png", sizes: "any", type: "image/png" },
@@ -49,22 +49,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "Ark Digital",
-    title: "Ark Digital - Custom Business Operation Solutions",
-    description: "We develop custom business operation solutions—workflows, automation, and systems tailored to your processes.",
+    siteName: "Arc Digital",
+    title: "Arc Digital — Automated GTM Systems & Revenue Operations",
+    description: "Predictable revenue. Instant lead response. Automated growth. We build GTM systems that convert.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ark Digital",
+        alt: "Arc Digital",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ark Digital - Custom Business Operation Solutions",
-    description: "We develop custom business operation solutions—workflows, automation, and systems tailored to your processes.",
+    title: "Arc Digital — Automated GTM Systems & Revenue Operations",
+    description: "Predictable revenue. Instant lead response. Automated growth. We build GTM systems that convert.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -79,7 +79,6 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add verification codes here when available
   },
 };
 

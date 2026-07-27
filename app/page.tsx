@@ -1,446 +1,386 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
 import { ProjectsPreview } from "@/components/sections/ProjectsPreview";
-import { Shield, Compass, Anchor } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Clock, Zap, BarChart3, MessageCircle, Database, Layers, Target, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Ark Digital develops custom business operation solutions. Workflows, automation, and operational systems tailored to how your business runs.",
+  description: "Arc Digital — GTM & Revenue Automation Agency. Predictable revenue, instant lead response, automated growth for B2B SMEs.",
 };
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <ProjectsPreview />
-      
-      {/* Mission Section */}
+
+      {/* The Problem / The Fix */}
       <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-black via-black-light to-black overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&h=1080&fit=crop&q=80"
-            alt="Mission Background"
+            alt="Data Center Background"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-10"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <div className="flex flex-col items-center justify-center mb-6 gap-0">
-                <Image
-                  src="/images/Logo%20icon%20transparent%20background.png"
-                  alt="Ark Digital Icon"
-                  width={150}
-                  height={150}
-                  className="opacity-80 -mb-6"
-                />
-                <Image
-                  src="/images/Logo%20Text%20white.png"
-                  alt="Ark Digital"
-                  width={270}
-                  height={120}
-                  className="opacity-80 -mt-6"
-                />
-              </div>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Our Core Mission
+                Your Revenue Has a Leak.{" "}
+                <span className="text-yellow">We&apos;ll Find It.</span>
               </h2>
-              <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                To empower businesses through custom operational solutions that streamline workflows, automate processes, and build systems that fit how you actually work—driving efficiency, growth, and readiness for what comes next.
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+                Most B2B SMEs lose 40-60% of inbound leads because they respond too late, 
+                rely on manual follow-ups, or have disconnected tools. We fix that.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12">
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all group">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80"
-                    alt="Target Market"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={40}
-                      height={40}
-                      className="opacity-60"
-                    />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-white font-semibold text-lg mb-2">Target Market</h3>
-                  <p className="text-slate-300 text-sm">
-                    We focus on mid-sized to large enterprises seeking custom operational solutions—workflows, automation, and systems that drive efficiency and growth.
-                  </p>
-                </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="bg-red-950/20 backdrop-blur-sm rounded-lg border border-red-500/20 p-8">
+                <h3 className="font-display text-lg font-bold text-red-400 mb-4 flex items-center gap-2">
+                  <Clock className="h-5 w-5" />
+                  The Old Way
+                </h3>
+                <ul className="space-y-3 text-slate-400">
+                  <li className="flex items-start gap-2">• Manual lead sorting and email ping-pong</li>
+                  <li className="flex items-start gap-2">• Hours wasted on CRM data entry</li>
+                  <li className="flex items-start gap-2">• No follow-up automation — leads go cold</li>
+                  <li className="flex items-start gap-2">• Disconnected tools creating data silos</li>
+                  <li className="flex items-start gap-2">• Sales and marketing operating in silos</li>
+                </ul>
               </div>
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all group">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80"
-                    alt="Agile-Scrum Methodology"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={40}
-                      height={40}
-                      className="opacity-60"
-                    />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-white font-semibold text-lg mb-2">Agile-Scrum Methodology</h3>
-                  <p className="text-slate-300 text-sm">
-                    Our Agile-Scrum methodology ensures efficient delivery by promoting collaboration, flexibility, and iterative progress, leading to higher customer satisfaction.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all group">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop&q=80"
-                    alt="Innovative Solutions"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={40}
-                      height={40}
-                      className="opacity-60"
-                    />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-white font-semibold text-lg mb-2">Innovative Solutions</h3>
-                  <p className="text-slate-300 text-sm">
-                    We build custom operational systems that fit your business—workflows, automation, and process tools designed for how you work, not generic software.
-                  </p>
-                </div>
+              <div className="bg-green-950/20 backdrop-blur-sm rounded-lg border border-yellow/30 p-8">
+                <h3 className="font-display text-lg font-bold text-yellow mb-4 flex items-center gap-2">
+                  <Zap className="h-5 w-5" />
+                  The Arc Digital Fix
+                </h3>
+                <ul className="space-y-3 text-slate-300">
+                  <li className="flex items-start gap-2">• Inbound leads qualified & routed in seconds via WhatsApp</li>
+                  <li className="flex items-start gap-2">• Automated CRM sync — zero manual entry</li>
+                  <li className="flex items-start gap-2">• Multi-channel sequences that nurture 24/7</li>
+                  <li className="flex items-start gap-2">• Unified data pipeline across all your tools</li>
+                  <li className="flex items-start gap-2">• Full-funnel visibility with actionable analytics</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose ARK Section */}
-      <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-black-light via-black to-black overflow-hidden">
+      {/* Core Services */}
+      <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-black-light via-black to-black-light overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80"
-            alt="Why Choose ARK Background"
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&q=80"
+            alt="Services Background"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black-light/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <div className="flex flex-col items-center justify-center mb-6 gap-0">
-                <Image
-                  src="/images/Logo%20icon%20transparent%20background.png"
-                  alt="Ark Digital Icon"
-                  width={150}
-                  height={150}
-                  className="opacity-80 -mb-6"
-                />
-                <Image
-                  src="/images/Logo%20Text%20white.png"
-                  alt="Ark Digital"
-                  width={270}
-                  height={120}
-                  className="opacity-80 -mt-6"
-                />
-              </div>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Why Choose ARK Digital?
+                Core Services
               </h2>
               <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
-                Specialists in custom business operation solutions—we build systems, workflows, and automation that fit how your business actually runs.
+                Three automation verticals that eliminate manual overhead and turn your GTM into a revenue engine.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10">
               <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop&q=80"
-                    alt="Stability & Security"
+                    src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&h=600&fit=crop&q=80"
+                    alt="WhatsApp Automation"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                  <div className="absolute top-4 left-4 w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <Shield className="h-8 w-8 text-yellow" />
-                  </div>
-                  <div className="absolute bottom-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={105}
-                      height={105}
-                      className="opacity-50"
-                    />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute top-4 left-4 w-14 h-14 bg-yellow/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <MessageCircle className="h-7 w-7 text-yellow" />
                   </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-white font-display text-xl font-bold mb-3">Stability & Security</h3>
-                  <p className="text-slate-300 leading-relaxed">
-                    We prioritize reliability and security so your operational systems run without disruption. Built for stability, designed for the long run.
+                <div className="p-6">
+                  <h3 className="text-white font-display text-xl font-bold mb-3">Speed-to-Lead & WhatsApp Automation</h3>
+                  <p className="text-slate-300 leading-relaxed mb-4 text-sm">
+                    Instant qualification, routing, and response for every inbound lead — right inside WhatsApp.
                   </p>
+                  <ul className="space-y-2 text-sm text-slate-400">
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>WhatsApp Business API integration</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Automated lead qualification bots</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Smart routing to sales teams</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Instant proposal & quote delivery</span></li>
+                  </ul>
                 </div>
               </div>
-              
+
               <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop&q=80"
-                    alt="Strategic Navigation"
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80"
+                    alt="Outbound Systems"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                  <div className="absolute top-4 left-4 w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <Compass className="h-8 w-8 text-yellow" />
-                  </div>
-                  <div className="absolute bottom-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={105}
-                      height={105}
-                      className="opacity-50"
-                    />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute top-4 left-4 w-14 h-14 bg-yellow/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Target className="h-7 w-7 text-yellow" />
                   </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-white font-display text-xl font-bold mb-3">Strategic Navigation</h3>
-                  <p className="text-slate-300 leading-relaxed">
-                    We map your operations first. Our team works with you to design the most efficient workflows and systems, avoiding bottlenecks and aligning with your goals.
+                <div className="p-6">
+                  <h3 className="text-white font-display text-xl font-bold mb-3">Outbound & Lead Gen Systems</h3>
+                  <p className="text-slate-300 leading-relaxed mb-4 text-sm">
+                    Multi-channel pipelines with data enrichment that fill your pipeline on autopilot.
                   </p>
+                  <ul className="space-y-2 text-sm text-slate-400">
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Email + LinkedIn + SMS sequences</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>B2B data enrichment & list building</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>AI-powered personalization</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>A/B testing & performance analytics</span></li>
+                  </ul>
                 </div>
               </div>
-              
+
               <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop&q=80"
-                    alt="Modern Innovation"
+                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&q=80"
+                    alt="CRM Reconciliation"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                  <div className="absolute top-4 left-4 w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <Anchor className="h-8 w-8 text-yellow" />
-                  </div>
-                  <div className="absolute bottom-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={105}
-                      height={105}
-                      className="opacity-50"
-                    />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute top-4 left-4 w-14 h-14 bg-yellow/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Database className="h-7 w-7 text-yellow" />
                   </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-white font-display text-xl font-bold mb-3">Modern Innovation</h3>
-                  <p className="text-slate-300 leading-relaxed">
-                    Modern technology applied to real operational challenges. Cloud, automation, and integration built around your business needs.
+                <div className="p-6">
+                  <h3 className="text-white font-display text-xl font-bold mb-3">CRM & Data Reconciliation</h3>
+                  <p className="text-slate-300 leading-relaxed mb-4 text-sm">
+                    Automating data flow between your tools — no more manual entry, duplicates, or silos.
                   </p>
+                  <ul className="space-y-2 text-sm text-slate-400">
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>CRM-to-tool integrations (HubSpot, Salesforce, etc.)</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Automated deduplication & cleaning</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Real-time sync across sales stack</span></li>
+                    <li className="flex items-start"><span className="text-yellow mr-2">•</span><span>Custom reporting dashboards</span></li>
+                  </ul>
                 </div>
               </div>
+            </div>
+
+            <div className="text-center">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-2 border-yellow text-yellow hover:bg-yellow/10 px-8 py-6 text-base group"
+              >
+                <Link href="/services">
+                  Explore All Services
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Preview Section */}
+      {/* Retainer Framework */}
       <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-black via-black-light to-black overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop&q=80"
-            alt="Services Background"
+            alt="Retainer Background"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-10"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <div className="flex flex-col items-center justify-center mb-6 gap-0">
-                <Image
-                  src="/images/Logo%20icon%20transparent%20background.png"
-                  alt="Ark Digital Icon"
-                  width={150}
-                  height={150}
-                  className="opacity-80 -mb-6"
-                />
-                <Image
-                  src="/images/Logo%20Text%20white.png"
-                  alt="Ark Digital"
-                  width={270}
-                  height={120}
-                  className="opacity-80 -mt-6"
-                />
-              </div>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Our Services
+                Choose Your <span className="text-yellow">Growth Track</span>
               </h2>
-              <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-4">
-                Custom operational solutions—workflows, automation, and business systems—designed around your processes and built to scale.
+              <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
+                Monthly retainers designed for South African (ZAR) and international (USD) clients. 
+                Pick the tier that matches your revenue ambition.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10">
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
-                <div className="relative h-56 overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop&q=80"
-                    alt="Custom Business Operations"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={105}
-                      height={105}
-                      className="opacity-50"
-                    />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl border border-yellow/30 hover:border-yellow/70 transition-all overflow-hidden">
+                <div className="bg-yellow/10 px-8 py-6 border-b border-yellow/20">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Layers className="h-5 w-5 text-yellow" />
+                    <h3 className="font-display text-xl font-bold text-white">Phase 2: Core Growth</h3>
                   </div>
+                  <p className="text-sm text-slate-400">Mid-tier — for businesses ready to automate their GTM engine</p>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-white font-display text-xl font-bold mb-3">Custom Business Operations</h3>
-                  <p className="text-slate-300 leading-relaxed mb-4">
-                    Systems built around your workflows and processes. We solve operational bottlenecks with solutions that fit how you work.
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-400">
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>Workflow & Process Automation</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>Operational Dashboards & Tools</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>Business-Specific Systems</span>
-                    </li>
+                <div className="p-8 space-y-6">
+                  <div className="space-y-1">
+                    <p className="text-sm text-slate-400">Starting from</p>
+                    <p className="text-3xl font-bold text-white">R18,500<span className="text-base text-slate-400 font-normal">/mo</span></p>
+                    <p className="text-sm text-slate-500">or $1,000/mo for international</p>
+                  </div>
+                  <ul className="space-y-3 text-sm text-slate-300">
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Speed-to-lead WhatsApp bot setup & management</span></li>
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Single outbound channel (email or LinkedIn)</span></li>
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>CRM-tool sync (up to 3 integrations)</span></li>
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Monthly performance report</span></li>
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Dedicated support (email)</span></li>
                   </ul>
+                  <Button
+                    asChild
+                    className="w-full bg-yellow hover:bg-yellow-light text-black font-semibold"
+                  >
+                    <Link href="/contact">Start Core Growth</Link>
+                  </Button>
                 </div>
               </div>
-              
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
-                <div className="relative h-56 overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&q=80"
-                    alt="Cloud Infrastructure"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={105}
-                      height={105}
-                      className="opacity-50"
-                    />
+
+              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl border border-yellow/50 hover:border-yellow-100 transition-all overflow-hidden relative">
+                <div className="absolute top-4 right-4 bg-yellow text-black text-xs font-bold px-3 py-1 rounded-full">
+                  POPULAR
+                </div>
+                <div className="bg-yellow/15 px-8 py-6 border-b border-yellow/30">
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="h-5 w-5 text-yellow" />
+                    <h3 className="font-display text-xl font-bold text-white">Phase 3: Full-Stack Scale</h3>
                   </div>
+                  <p className="text-sm text-slate-400">Premium — end-to-end revenue operations for high-growth teams</p>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-white font-display text-xl font-bold mb-3">Cloud Infrastructure</h3>
-                  <p className="text-slate-300 leading-relaxed mb-4">
-                    Building scalable environments that grow with your user base. Deploy, scale, and optimize with confidence.
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-400">
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>Cloud Architecture Design</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>Scalable Infrastructure Setup</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>DevOps & CI/CD Pipelines</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-yellow/30 hover:border-yellow/70 transition-all hover:bg-black-light/50 group">
-                <div className="relative h-56 overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop&q=80"
-                    alt="Digital Transformation"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <Image
-                      src="/images/Logo%20icon%20transparent%20background.png"
-                      alt="Logo Icon"
-                      width={105}
-                      height={105}
-                      className="opacity-50"
-                    />
+                <div className="p-8 space-y-6">
+                  <div className="space-y-1">
+                    <p className="text-sm text-slate-400">Starting from</p>
+                    <p className="text-3xl font-bold text-white">R38,000<span className="text-base text-slate-400 font-normal">/mo</span></p>
+                    <p className="text-sm text-slate-500">or $2,200/mo for international</p>
                   </div>
-                </div>
-                <div className="p-8">
-                  <h3 className="text-white font-display text-xl font-bold mb-3">Digital Transformation</h3>
-                  <p className="text-slate-300 leading-relaxed mb-4">
-                    Helping legacy businesses transition into the modern, data-driven era. Transform your operations with cutting-edge technology.
-                  </p>
-                  <ul className="space-y-2 text-sm text-slate-400">
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>Legacy System Modernization</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>AI Integration & Automation</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-yellow mr-2">•</span>
-                      <span>Data-Driven Solutions</span>
-                    </li>
+                  <ul className="space-y-3 text-sm text-slate-300">
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Everything in Core Growth, plus:</span></li>
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Multi-channel outbound (email + LinkedIn + SMS)</span></li>
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Full CRM audit, rebuild & ongoing reconciliation</span></li>
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Custom analytics dashboard & funnel tracking</span></li>
+                    <li className="flex items-start gap-2"><span className="text-yellow mt-1">•</span><span>Quarterly strategy calls & priority support</span></li>
                   </ul>
+                  <Button
+                    asChild
+                    className="w-full bg-yellow hover:bg-yellow-light text-black font-semibold"
+                  >
+                    <Link href="/contact">Go Full-Stack Scale</Link>
+                  </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="text-center">
-              <a
-                href="/services"
-                className="inline-block px-8 py-4 border-2 border-yellow text-yellow hover:bg-yellow hover:text-black font-semibold rounded-md transition-all text-lg"
-              >
-                Explore All Services
-              </a>
+
+            <div className="text-center mt-10">
+              <p className="text-slate-400 text-sm">
+                All retainers include a free GTM & Revenue Leak Audit to identify exactly where your pipeline is bleeding.
+              </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Arc Digital / Social Proof */}
+      <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-black-light via-black to-black overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop&q=80"
+            alt="Team Background"
+            fill
+            className="object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black/95" />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Lean Team. <span className="text-yellow">Massive Impact.</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-3xl mx-auto">
+              We&apos;re a small, agile crew of technical operators who have built and scaled revenue systems 
+              for businesses across South Africa and globally. We don&apos;t do bloated agencies or 6-month 
+              delivery timelines. We deploy high-impact automations in days, not months.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
+                <p className="text-3xl font-bold text-yellow mb-1">5+</p>
+                <p className="text-sm text-slate-400">Years in B2B Tech</p>
+              </div>
+              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
+                <p className="text-3xl font-bold text-yellow mb-1">50+</p>
+                <p className="text-sm text-slate-400">Automations Deployed</p>
+              </div>
+              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
+                <p className="text-3xl font-bold text-yellow mb-1">3 Days</p>
+                <p className="text-sm text-slate-400">Average Onboarding</p>
+              </div>
+              <div className="bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/20 p-6">
+                <p className="text-3xl font-bold text-yellow mb-1">ZAR + USD</p>
+                <p className="text-sm text-slate-400">Local & Global Clients</p>
+              </div>
+            </div>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-yellow text-yellow hover:bg-yellow/10 px-8 py-6 text-base group"
+            >
+              <Link href="/projects">
+                View Case Studies
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Preview */}
+      <ProjectsPreview />
+
+      {/* Final CTA */}
+      <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-black via-black-light to-black overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop&q=80"
+            alt="CTA Background"
+            fill
+            className="object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Ready to Stop <span className="text-yellow">Losing Revenue</span> to Leaky Pipelines?
+            </h2>
+            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">
+              Book a free GTM & Revenue Leak Audit. We&apos;ll audit your current pipeline, identify the leaks, 
+              and show you exactly what an automated GTM system would look like for your business.
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-yellow hover:bg-yellow-light text-black font-semibold px-10 py-7 text-lg group"
+            >
+              <Link href="/contact">
+                Book Your Free Audit
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
+            <p className="text-sm text-slate-500 mt-4">
+              No commitment. No sales pitch. Just a clear roadmap to automated revenue.
+            </p>
           </div>
         </div>
       </section>

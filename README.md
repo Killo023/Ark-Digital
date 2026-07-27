@@ -1,124 +1,54 @@
-# Ark Digital Website
+# Arc Digital — GTM & Revenue Automation Agency
 
-A modern, high-performance website for Ark Digital - specialists in custom business operation solutions: workflows, automation, and operational systems.
+A modern Next.js 15 website for **Arc Digital** — a Go-To-Market (GTM) & Revenue Automation Agency helping B2B SMEs eliminate manual overhead and accelerate revenue through automated GTM systems.
+
+**Tagline:** Predictable Revenue. Instant Lead Response. Automated Growth.
 
 ## Tech Stack
 
 - **Framework:** Next.js 15 (App Router)
-- **Styling:** Tailwind CSS
-- **Components:** Shadcn/UI
-- **Animations:** Framer Motion
+- **Language:** TypeScript strict
+- **Styling:** Tailwind CSS 3.4
+- **Animations:** Framer Motion 11
 - **Icons:** Lucide React
-- **Language:** TypeScript
+- **UI:** Custom shadcn-style components (Radix primitives)
 
 ## Getting Started
 
-### Installation
-
 ```bash
 npm install
+npm run dev      # http://localhost:3000
+npm run build    # Production build
+npm run start    # Start production server
+npm run lint     # ESLint
 ```
 
-### Development
+## Site Structure
 
-```bash
-npm run dev
-```
+| Route | Purpose |
+|---|---|
+| `/` | Home — Hero, Problem/Fix, Services, Retainers, About, CTA |
+| `/services` | Service verticals: Speed-to-Lead, Outbound, CRM |
+| `/projects` | Case study grid |
+| `/projects/[slug]` | Individual case study |
+| `/about` | About Arc Digital, values, process |
+| `/contact` | GTM & Revenue Audit booking form |
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+## Service Verticals
 
-### Build
+1. **Speed-to-Lead & WhatsApp Automation** — Instant qualification and routing for inbound traffic
+2. **Outbound & Lead Gen Systems** — Multi-channel pipelines and data enrichment
+3. **CRM & Data Reconciliation** — Automating data flow between tools
 
-```bash
-npm run build
-```
+## Retainer Framework
 
-### Start Production Server
+- **Phase 2: Core Growth** — R18,500/mo (ZAR) / $1,000/mo (USD)
+- **Phase 3: Full-Stack Scale** — R38,000/mo (ZAR) / $2,200/mo (USD)
 
-```bash
-npm start
-```
+## Brand
 
-## Project Structure
+- **Colors:** Black (#000000), Yellow/Gold (#FFD700), Navy (#1A2B3C)
+- **Fonts:** Playfair Display (headings), Montserrat (display), Inter (body)
+- **Design:** Dark mode, glassmorphism cards, gold accents, full-bleed background images
 
-```
-├── app/                    # Next.js App Router pages
-│   ├── layout.tsx          # Root layout with fonts & metadata
-│   ├── page.tsx            # Homepage
-│   ├── projects/           # Projects pages
-│   ├── values/             # Values page
-│   ├── services/           # Services page
-│   └── contact/            # Contact page
-├── components/
-│   ├── ui/                 # Shadcn/UI components
-│   ├── layout/             # Navbar, Footer
-│   ├── sections/           # Page sections (Hero, ProjectsPreview)
-│   └── projects/           # Project-related components
-├── lib/
-│   ├── utils.ts            # Utility functions
-│   ├── animations.ts       # Framer Motion variants
-│   └── projects.ts         # Project data
-└── public/
-    └── images/
-        └── projects/       # Project images (add your images here)
-```
-
-## Adding Project Images
-
-Project images should be placed in the following structure:
-
-```
-public/images/projects/
-├── chernelang-physio/
-│   ├── hero.jpg
-│   ├── gallery-1.jpg
-│   ├── gallery-2.jpg
-│   └── gallery-3.jpg
-├── fitguide-pro/
-│   ├── hero.jpg
-│   └── gallery-*.jpg
-├── skainet-cleaning/
-├── dma-law/
-└── skills-to-furnish/
-```
-
-### Image Requirements
-
-- **Hero images:** Recommended size: 1920x1080px (16:9 aspect ratio)
-- **Gallery images:** Recommended size: 1920x1080px or similar
-- **Formats:** JPG, PNG, or WebP
-- **Optimization:** Next.js automatically optimizes images, but keep file sizes reasonable
-
-## Brand Colors
-
-- **Deep Sea Navy:** `#1A2B3C` (primary)
-- **Golden Accents:** `#D4AF37` (accent)
-- **Slate Grays:** Various shades for text and backgrounds
-
-## Typography
-
-- **Headings:** Playfair Display (serif) or Montserrat (display)
-- **Body:** Inter (sans-serif)
-
-## Features
-
-- ✅ Responsive design (mobile-first)
-- ✅ SEO optimized
-- ✅ Accessible (A11Y)
-- ✅ Image optimization
-- ✅ Smooth animations
-- ✅ Glassmorphism effects
-- ✅ Project portfolio with detailed case studies
-- ✅ Image gallery with lightbox
-
-## Future Enhancements
-
-- Values page content
-- Services page content
-- Contact form with Server Actions
-- Blog functionality
-- Additional project filtering
-
-## License
-
-Copyright © 2024 Ark Digital. All rights reserved.
+Copyright © 2024 Arc Digital. All rights reserved.

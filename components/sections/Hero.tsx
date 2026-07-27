@@ -2,64 +2,38 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Compass, Shield, Anchor } from "lucide-react";
+import { ArrowRight, Zap, BarChart3, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { fadeIn, slideUp, staggerContainer, revealCurve } from "@/lib/animations";
+import { fadeIn, slideUp, staggerContainer } from "@/lib/animations";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-black-light to-black pt-4 md:pt-8">
-      {/* Background Image */}
       <div className="absolute inset-0 z-[1]">
         <Image
-          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&q=80"
-          alt="Business Operations Solutions Background"
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop&q=80"
+          alt="GTM Analytics Background"
           fill
-          className="object-cover opacity-20"
+          className="object-cover opacity-15"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black-light/80 to-black/90" />
       </div>
 
-      {/* Background decorative elements - hull-inspired curves */}
       <div className="absolute inset-0 overflow-hidden z-[1]">
         <motion.div
           initial={{ scale: 1.2, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.1 }}
+          animate={{ scale: 1, opacity: 0.08 }}
           transition={{ duration: 1.5 }}
-          className="absolute top-0 right-0 w-[800px] h-[800px] bg-yellow rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-yellow rounded-full blur-3xl"
         />
         <motion.div
           initial={{ scale: 1.2, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.1 }}
+          animate={{ scale: 1, opacity: 0.06 }}
           transition={{ duration: 1.5, delay: 0.2 }}
-          className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-yellow rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-yellow rounded-full blur-3xl"
         />
-        
-        {/* Logo Watermark */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5">
-          <Image
-            src="/images/Logo%20icon%20transparent%20background.png"
-            alt="Logo Watermark"
-            width={600}
-            height={600}
-            className="object-contain"
-          />
-        </div>
-        
-        {/* Curved lines representing hull */}
-        <svg
-          className="absolute bottom-0 left-0 w-full h-64 opacity-20"
-          viewBox="0 0 1200 200"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,200 Q300,100 600,150 T1200,100 L1200,200 Z"
-            fill="currentColor"
-            className="text-yellow"
-          />
-        </svg>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -69,82 +43,65 @@ export function Hero() {
           animate="visible"
           className="max-w-4xl mx-auto text-center relative z-10"
         >
-          {/* Main Heading */}
           <motion.div variants={slideUp} className="mb-6">
-            <div className="flex flex-col items-center justify-center mb-6 gap-4">
+            <div className="flex flex-col items-center justify-center mb-8 gap-4">
               <Image
                 src="/images/Logo%20Text%20white.png"
-                alt="Ark Digital"
+                alt="Arc Digital"
                 width={370}
                 height={150}
                 className="opacity-90"
                 priority
               />
             </div>
-            <div className="inline-flex items-center space-x-2 mb-4 px-4 py-2 bg-black-light/50 backdrop-blur-sm rounded-full border border-yellow/30">
-              <Anchor className="h-4 w-4 text-yellow" />
-              <span className="text-sm text-slate-300 font-medium">
-                Custom Business Operations
+            <div className="inline-flex items-center space-x-2 mb-6 px-4 py-2 bg-yellow/10 backdrop-blur-sm rounded-full border border-yellow/30">
+              <Zap className="h-4 w-4 text-yellow" />
+              <span className="text-sm text-yellow font-medium">
+                GTM & Revenue Automation Agency
               </span>
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Custom{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-yellow">Business Operations</span>
-                <motion.span
-                  variants={revealCurve}
-                  className="absolute bottom-0 left-0 right-0 h-3 bg-yellow/20 -z-0"
-                  style={{ transformOrigin: "bottom" }}
-                />
-              </span>
+              Predictable Revenue.{" "}
+              <span className="text-yellow">Instant Lead Response.</span>
               <br />
-              Solutions That Scale
+              Automated Growth.
             </h1>
           </motion.div>
 
-          {/* Subheading */}
           <motion.p
             variants={slideUp}
-            className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
-            Transforming how you run your business. We design and build custom operational solutions—workflows, automation, and systems—tailored to your processes, not generic off-the-shelf software.
+            We engineer automated GTM systems that replace manual admin with scalable growth engines — 
+            helping South African and global B2B SMEs capture, qualify, and convert leads on autopilot.
           </motion.p>
 
-          {/* Value Propositions */}
           <motion.div
             variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-10"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-12"
           >
             {[
               {
-                icon: Shield,
-                title: "Stability & Security",
-                description: "Robust systems built for reliability so your operations run without disruption",
+                icon: Zap,
+                title: "Speed-to-Lead",
+                description: "WhatsApp automation that qualifies and routes inbound leads in seconds, not hours",
               },
               {
-                icon: Compass,
-                title: "Strategic Navigation",
-                description: "We map your workflows first, then design the most efficient path to your goals",
+                icon: BarChart3,
+                title: "Outbound Pipelines",
+                description: "Multi-channel sequences with data enrichment that fill your pipeline on autopilot",
               },
               {
-                icon: Anchor,
-                title: "Operation-Focused",
-                description: "Solutions built around how you work, not how generic software thinks you should",
+                icon: MessageCircle,
+                title: "CRM Sync",
+                description: "Automated data flow between your tools — no more manual entry or silos",
               },
             ].map((item, index) => (
               <motion.div
                 key={item.title}
                 variants={fadeIn}
-                className="p-4 md:p-6 bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/30 hover:border-yellow/70 transition-all duration-300 relative"
+                className="p-4 md:p-6 bg-black-light/30 backdrop-blur-sm rounded-lg border border-yellow/30 hover:border-yellow/70 transition-all duration-300"
               >
-                <div className="absolute top-2 right-2 opacity-30">
-                  <Image
-                    src="/images/Logo%20icon%20transparent%20background.png"
-                    alt="Logo Icon"
-                    width={95}
-                    height={95}
-                  />
-                </div>
                 <item.icon className="h-8 w-8 md:h-10 md:w-10 text-yellow mx-auto mb-3" />
                 <h3 className="font-display text-sm md:text-base font-semibold text-white mb-1">
                   {item.title}
@@ -156,7 +113,6 @@ export function Hero() {
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
           <motion.div
             variants={slideUp}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
@@ -166,8 +122,8 @@ export function Hero() {
               size="lg"
               className="bg-yellow hover:bg-yellow-light text-black font-semibold px-8 py-6 text-base group"
             >
-              <Link href="/projects">
-                View Our Work
+              <Link href="/contact">
+                Book a GTM & Revenue Audit
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
@@ -177,13 +133,12 @@ export function Hero() {
               size="lg"
               className="border-2 border-yellow text-yellow hover:bg-yellow/10 px-8 py-6 text-base"
             >
-              <Link href="/contact">Get in Touch</Link>
+              <Link href="/services">See How It Works</Link>
             </Button>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

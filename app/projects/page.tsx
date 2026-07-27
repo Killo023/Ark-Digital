@@ -4,8 +4,8 @@ import { projects } from "@/lib/projects";
 import { ProjectGrid } from "@/components/projects/ProjectGrid";
 
 export const metadata: Metadata = {
-  title: "Projects",
-  description: "Explore our portfolio of software solutions. From healthcare to legal services, we deliver excellence across industries.",
+  title: "Case Studies",
+  description: "Explore Arc Digital's case studies. See how we've helped B2B SMEs automate their GTM systems and accelerate revenue.",
 };
 
 export default function ProjectsPage() {
@@ -26,10 +26,10 @@ export default function ProjectsPage() {
           {/* Header */}
           <div className="text-center mb-12 md:mb-16">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Our Projects
+                Case Studies
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
-              Showcasing excellence across industries. Each project represents our commitment to integrity, security, and innovation.
+              Real businesses. Real automation. Real results. Each project showcases how we&apos;ve helped companies eliminate manual overhead and accelerate revenue.
             </p>
           </div>
         </div>

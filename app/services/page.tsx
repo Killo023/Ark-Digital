@@ -1,96 +1,60 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Code, Cloud, RefreshCw, Shield, Zap, Database, Smartphone, Globe, BarChart3, Lock } from "lucide-react";
+import { MessageCircle, Target, Database, Zap, BarChart3, Settings, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Custom business operation solutions: workflow automation, operational systems, process tools, and integration services.",
+  description: "Arc Digital — Speed-to-Lead WhatsApp Automation, Outbound Lead Gen Systems, CRM & Data Reconciliation for B2B SMEs.",
 };
 
 export default function ServicesPage() {
-  const mainServices = [
+  const coreServices = [
     {
-      icon: Code,
-      title: "Custom Business Operation Solutions",
-      description: "We design and build operational systems that fit your workflows—process automation, internal tools, and business-specific applications that address how you actually run your operations.",
+      icon: MessageCircle,
+      title: "Speed-to-Lead & WhatsApp Automation",
+      subtitle: "Capture every lead the moment they land",
+      description: "Stop losing inbound leads to slow response times. We build WhatsApp-first automation systems that qualify, route, and engage prospects within seconds — not hours.",
       features: [
-        "Workflow & process automation",
-        "Operational dashboards & tools",
-        "Business-specific applications",
-        "Integration with existing systems",
-        "Scalable operational infrastructure",
-        "End-to-end process design",
+        "WhatsApp Business API integration with your existing number",
+        "Smart qualification bots that capture intent & contact details",
+        "Instant routing to the right sales rep or team",
+        "Automated proposal, quote & brochure delivery via WhatsApp",
+        "24/7 lead capture — even outside business hours",
+        "Seamless CRM logging of every conversation",
       ],
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&h=1080&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=1920&h=1080&fit=crop&q=80",
     },
     {
-      icon: Cloud,
-      title: "Operational Infrastructure",
-      description: "We build scalable infrastructure for your operational systems—ensuring your workflows, automation, and business tools run reliably, integrate seamlessly, and grow with your business.",
+      icon: Target,
+      title: "Outbound & Lead Gen Systems",
+      subtitle: "Fill your pipeline on autopilot",
+      description: "Stop manual prospecting. We build multi-channel outbound engines that find, enrich, and engage your ideal customers across email, LinkedIn, and SMS.",
       features: [
-        "Scalable operational infrastructure",
-        "System integration",
-        "High availability & reliability",
-        "Deployment & maintenance",
-        "Streamlined delivery",
-        "Process continuity",
+        "Multi-channel sequences (email + LinkedIn + SMS)",
+        "B2B data enrichment & ICP-targeted list building",
+        "AI-powered personalization at scale",
+        "Automated follow-up cadences that never drop a lead",
+        "A/B testing subject lines, copy & timing",
+        "Performance dashboards with pipeline attribution",
       ],
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80",
-    },
-    {
-      icon: RefreshCw,
-      title: "Operations & Process Consulting",
-      description: "We work with you to map, optimize, and modernize your business operations—identifying bottlenecks, designing efficient workflows, and implementing systems that improve how you work.",
-      features: [
-        "Operations assessment",
-        "Workflow design & optimization",
-        "Process mapping",
-        "Strategic recommendations",
-        "Implementation planning",
-        "Operational performance improvement",
-      ],
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop&q=80",
-    },
-  ];
-
-  const additionalServices = [
-    {
-      icon: Shield,
-      title: "Security Solutions",
-      description: "Comprehensive security audits, penetration testing, and secure coding practices.",
-    },
-    {
-      icon: Zap,
-      title: "AI Integration",
-      description: "Machine learning models, AI-powered automation, and intelligent system integration.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop&q=80",
     },
     {
       icon: Database,
-      title: "Data & Reporting",
-      description: "Operational data design, reporting dashboards, and business intelligence for decision-making.",
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile & Field Tools",
-      description: "Mobile apps and field tools for operations, reporting, and on-the-go process management.",
-    },
-    {
-      icon: Globe,
-      title: "Web & Portal Development",
-      description: "Internal portals, client-facing interfaces, and operational web tools tailored to your workflows.",
-    },
-    {
-      icon: BarChart3,
-      title: "Analytics & Insights",
-      description: "Data visualization, reporting dashboards, and business intelligence tools.",
-    },
-    {
-      icon: Lock,
-      title: "Compliance & Security",
-      description: "GDPR compliance, security audits, and regulatory requirement implementation.",
+      title: "CRM & Data Reconciliation",
+      subtitle: "One source of truth, zero manual entry",
+      description: "Disconnected tools create data chaos. We automate the flow between your CRM, email, calendar, invoicing, and every tool in your stack — so your data is always clean, current, and actionable.",
+      features: [
+        "CRM-to-tool integrations (HubSpot, Salesforce, Pipedrive, etc.)",
+        "Automated deduplication, enrichment & cleaning",
+        "Real-time bidirectional sync across your entire sales stack",
+        "Custom reporting dashboards with funnel visualization",
+        "Lead scoring and routing automation",
+        "Data migration and legacy system cleanup",
+      ],
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80",
     },
   ];
 
@@ -100,7 +64,7 @@ export default function ServicesPage() {
       <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&h=1080&fit=crop&q=80"
             alt="Services Background"
             fill
             className="object-cover opacity-20"
@@ -109,33 +73,35 @@ export default function ServicesPage() {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center space-x-2 mb-4 px-4 py-2 bg-yellow/10 backdrop-blur-sm rounded-full border border-yellow/30">
+              <Zap className="h-4 w-4 text-yellow" />
+              <span className="text-sm text-yellow font-medium">Automated GTM Systems</span>
+            </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Our Services
+              Services
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-8">
-              Custom business operation solutions. We design workflows, automation, and operational systems tailored to how your business runs.
-            </p>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              ARK DIGITAL works with mid-sized to large enterprises seeking custom operational solutions—systems, workflows, and automation built around their unique processes.
+              Three automation verticals engineered to eliminate manual overhead, 
+              shorten response times, and turn your GTM into a revenue engine.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Services */}
+      {/* Core Services */}
       <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&h=1080&fit=crop&q=80"
-            alt="Main Services Background"
+            alt="Core Services Background"
             fill
             className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/95 via-navy/90 to-navy-light/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black-light/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="space-y-20">
-            {mainServices.map((service, index) => (
+          <div className="space-y-24">
+            {coreServices.map((service, index) => (
               <div
                 key={service.title}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center ${
@@ -150,13 +116,16 @@ export default function ServicesPage() {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
                   </div>
                 </div>
                 <div className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
-                  <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mb-6">
-                    <service.icon className="h-8 w-8 text-gold" />
+                  <div className="w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center mb-6">
+                    <service.icon className="h-8 w-8 text-yellow" />
                   </div>
+                  <p className="text-yellow font-display text-sm uppercase tracking-wider mb-2">
+                    {service.subtitle}
+                  </p>
                   <h2 className="text-white font-display text-3xl md:text-4xl font-bold mb-4">
                     {service.title}
                   </h2>
@@ -164,9 +133,9 @@ export default function ServicesPage() {
                     {service.description}
                   </p>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start text-slate-300">
-                        <span className="text-gold mr-2 mt-1">•</span>
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start text-slate-300 text-sm">
+                        <CheckCircle className="h-4 w-4 text-yellow mr-2 mt-0.5 flex-shrink-0" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -178,66 +147,58 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Additional Services */}
+      {/* Retainer Summary */}
       <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80"
-            alt="Additional Services Background"
+            alt="Retainer Summary Background"
             fill
             className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-light/95 via-navy/90 to-navy-dark/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black-light/95 via-black/90 to-black-light/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-                Additional Capabilities
+                How It Works
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Additional capabilities that support and extend your operational systems.
+                Start with a free audit, then choose the retainer that fits your growth stage.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {additionalServices.map((service, index) => {
-                const serviceImages = [
-                  "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&q=80",
-                  "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop&q=80",
-                  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop&q=80",
-                  "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop&q=80",
-                  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80",
-                  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80",
-                  "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop&q=80",
-                ];
-                return (
-                  <div
-                    key={service.title}
-                    className="bg-navy-light/40 backdrop-blur-sm rounded-xl overflow-hidden border border-gold/20 hover:border-gold/50 transition-all hover:bg-navy-light/50 group"
-                  >
-                    <div className="relative h-40 overflow-hidden">
-                      <Image
-                        src={serviceImages[index % serviceImages.length]}
-                        alt={service.title}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 to-transparent" />
-                      <div className="absolute top-3 right-3 w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <service.icon className="h-5 w-5 text-gold" />
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-white font-display text-lg font-bold mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-slate-300 text-sm leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
+                <div className="w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Settings className="h-8 w-8 text-yellow" />
+                </div>
+                <h3 className="text-white font-display text-xl font-bold mb-3">1. Free GTM Audit</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  We audit your current pipeline, identify leaks, and deliver a roadmap with 
+                  expected ROI — no commitment required.
+                </p>
+              </div>
+              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
+                <div className="w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BarChart3 className="h-8 w-8 text-yellow" />
+                </div>
+                <h3 className="text-white font-display text-xl font-bold mb-3">2. We Build & Deploy</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Within days, not months. We configure your automation stack, integrate your tools, 
+                  and go live with full testing.
+                </p>
+              </div>
+              <div className="bg-black-light/40 backdrop-blur-sm rounded-xl p-8 border border-yellow/20 text-center">
+                <div className="w-16 h-16 bg-yellow/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-8 w-8 text-yellow" />
+                </div>
+                <h3 className="text-white font-display text-xl font-bold mb-3">3. Revenue on Autopilot</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Monthly management, optimization, and support. Your GTM runs 24/7 — 
+                  you focus on closing deals.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -252,58 +213,25 @@ export default function ServicesPage() {
             fill
             className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/95 via-navy/90 to-navy-light/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black-light/90 to-black/95" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Image Showcase */}
-            <div className="grid grid-cols-3 gap-4 mb-12 max-w-2xl mx-auto">
-              <div className="relative aspect-square rounded-lg overflow-hidden group">
-                <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&q=80"
-                  alt="Team"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="relative aspect-square rounded-lg overflow-hidden group">
-                <Image
-                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=400&fit=crop&q=80"
-                  alt="Development"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="relative aspect-square rounded-lg overflow-hidden group">
-                <Image
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop&q=80"
-                  alt="Innovation"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-            </div>
-            
-            <div className="bg-navy-light/40 backdrop-blur-sm rounded-2xl p-12 border border-gold/20">
+            <div className="bg-black-light/40 backdrop-blur-sm rounded-2xl p-12 border border-yellow/20">
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to Streamline Your Operations?
+                Let&apos;s Find Your Revenue Leaks
               </h2>
-              <p className="text-lg text-slate-300 mb-6 max-w-2xl mx-auto">
-                Let&apos;s discuss how custom operational solutions can solve your workflow challenges and drive efficiency.
+              <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+                Book a free GTM & Revenue Leak Audit. We&apos;ll show you exactly where your pipeline is bleeding 
+                and what an automated system would look like for your business.
               </p>
-              <div className="bg-navy-dark/50 rounded-lg p-6 border border-gold/20 max-w-2xl mx-auto mb-8">
-                <h3 className="text-white font-display text-lg font-bold mb-2">Our Methodology</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  Our Agile-Scrum methodology ensures efficient delivery of projects by promoting collaboration, flexibility, and iterative progress, ultimately leading to higher customer satisfaction and successful outcomes.
-                </p>
-              </div>
               <Button
                 asChild
                 size="lg"
-                className="bg-gold hover:bg-gold-light text-navy-dark font-semibold px-8 py-6 text-base group"
+                className="bg-yellow hover:bg-yellow-light text-black font-semibold px-8 py-6 text-base group"
               >
                 <Link href="/contact">
-                  Get in Touch
+                  Book Your Free Audit
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>

@@ -21,10 +21,9 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/values", label: "Values" },
     { href: "/services", label: "Services" },
-    { href: "/contact", label: "Contact" },
+    { href: "/projects", label: "Case Studies" },
+    { href: "/contact", label: "Book an Audit" },
   ];
 
   return (
